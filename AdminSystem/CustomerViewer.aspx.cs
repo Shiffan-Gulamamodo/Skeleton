@@ -15,13 +15,13 @@ public partial class _1Viewer : System.Web.UI.Page
         //Get the Data form the session Object 
         ACustomer = (clsCustomer)Session["ACustomer"];
         //Display the Customer Full Name for this entry
-        Response.Write(ACustomer.CustomerId + "<br />");
-        Response.Write(ACustomer.CustomerFullName + "<br />");
-        Response.Write(ACustomer.CustomerEmail + "<br />");
-        Response.Write(ACustomer.CustomerPassword + "<br />");
-        Response.Write(ACustomer.CustomerAddress + "<br />");
-        Response.Write(ACustomer.CustomerAccountCreatedAt + "<br />");
-        Response.Write(ACustomer.IsCustomerAccountActive);
+        Response.Write("Customer ID: " + ACustomer.CustomerId + "<br />");
+        Response.Write("Customer FullName: " + ACustomer.CustomerFullName + "<br />");
+        Response.Write("Customer Email: " + ACustomer.CustomerEmail + "<br />");
+        Response.Write("Customer Password: " + ACustomer.CustomerPassword + "<br />");
+        Response.Write("Customer Address: " + ACustomer.CustomerAddress + "<br />");
+        Response.Write("Customer Account Created At: " + ACustomer.CustomerAccountCreatedAt + "<br />");
+        Response.Write("Is Customer Account Active: " + ACustomer.IsCustomerAccountActive);
 
     }
 }
