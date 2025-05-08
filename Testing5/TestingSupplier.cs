@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Testing5
 {
     [TestClass]
-    public class TestingStock
+    public class TestingSupplier
     {
         private const bool v = true;
 
