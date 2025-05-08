@@ -25,4 +25,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnOrder.OrderLineID = Convert.ToInt32(txtOrderLineId.Text);
         AnOrder.IsPaid = chkIsPaid.Checked;
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsOrder AnOrder = new clsOrder();
+        int OrderId;
+        Boolean Found = false;
+        OrderId = Convert.ToInt32(txtOrderId.Text);
+        Found = AnOrder.Find(OrderId);
+        if (Found == true)
+        {
+            txtStaffId.Text = AnOrder.StaffID.ToString();
+            txtOrderDate.Text = AnOrder.OrderDate.ToString();
+            txtCustomerId.Text = AnOrder.CustomerID.ToString();
+            txtDeliveryAddress.Text = AnOrder.DeliveryAddress;
+            txtOrderLineId.Text = AnOrder.OrderLineID.ToString();
+            chkIsPaid.Checked = AnOrder.IsPaid;
+        }
+    }
 }
