@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -17,114 +17,68 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void DateAddedPropertyOK()
+        public void IsAvailablePropertyOK()
         {
             //create an instance of the class we want to create
-            clsSupplier AStock = new clsStock();
+            clsSupplier ASupplier = new clsSupplier();
             //create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
-            //assign the data to the property
-            AStock.DateAdded = TestData;
+            Boolean TestData = true;  // Change to match your actual test data for availability
+                                   //assign the data to the property
+            ASupplier.IsAvailable = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AStock.DateAdded, TestData);
+            Assert.AreEqual(ASupplier.IsAvailable, TestData);
         }
 
         [TestMethod]
         public void StockIDPropertyOK()
         {
             //create an instance of the class we want to create
-            clsStock AStock = new clsStock();
+            clsSupplier ASupplier = new clsSupplier();
             //create some test data to assign to the property
-            int TestData = 1;
-            //assign the data to the property
-            AStock.StockID = TestData;
+            int TestData = 1;  // Test value for StockID
+                               //assign the data to the property
+            ASupplier.StockID = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AStock.StockID, TestData);
+            Assert.AreEqual(ASupplier.StockID, TestData);
         }
 
         [TestMethod]
-        public void SupplierIDPropertyOK()
+        public void SupplyIdPropertyOK()
         {
             //create an instance of the class we want to create
-            clsStock AStock = new clsStock();
+            clsSupplier ASupplier = new clsSupplier();
             //create some test data to assign to the property
-            int TestData = 1;
-            //assign the data to the property
-            AStock.SupplierID = TestData;
+            int TestData = 1;  // Test value for SupplyId (identity column)
+                               //assign the data to the property
+            ASupplier.SupplyId = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AStock.SupplierID, TestData);
+            Assert.AreEqual(ASupplier.SupplyId, TestData);
         }
 
         [TestMethod]
-        public void ProductNamePropertyOK()
+        public void PhoneNamePropertyOK()
         {
             //create an instance of the class we want to create
-            clsStock AStock = new clsStock();
+            clsSupplier ASupplier = new clsSupplier();
             //create some test data to assign to the property
-            string TestData = "iPhone 14 Pro Max";
-            //assign the data to the property
-            AStock.ProductName = TestData;
+            string TestData = "iPhone 14 Pro Max";  // Test value for PhoneName
+                                                    //assign the data to the property
+            ASupplier.PhoneName = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AStock.ProductName, TestData);
+            Assert.AreEqual(ASupplier.PhoneName, TestData);
         }
 
         [TestMethod]
-        public void StockQuantityPropertyOK()
+        public void DeliveryDatePropertyOK()
         {
             //create an instance of the class we want to create
-            clsStock AStock = new clsStock();
+            clsSupplier ASupplier = new clsSupplier();
             //create some test data to assign to the property
-            int TestData = 10;
-            //assign the data to the property
-            AStock.StockQuantity = TestData;
+            DateTime TestData = DateTime.Now;  // Test value for DeliveryDate
+                                               //assign the data to the property
+            ASupplier.DeliveryDate = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AStock.StockQuantity, TestData);
+            Assert.AreEqual(ASupplier.DeliveryDate, TestData);
         }
-
-        [TestMethod]
-        public void InStockPropertyOK()
-        {
-            //create an instance of the class we want to create
-            clsStock AStock = new clsStock();
-            //create some test data to assign to the property
-            bool TestData = true;
-            //assign the data to the property
-            AStock.InStock = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AStock.InStock, TestData);
-        }
-
-        [TestMethod]
-        public void PricePropertyOK()
-        {
-            //create an instance of the class we want to create
-            clsStock AStock = new clsStock();
-            //create some test data to assign to the property
-            decimal TestData = 9999.99m;
-            //assign the data to the property
-            AStock.Price = TestData;
-            //test to see that the two values are the same
-            Assert.AreEqual(AStock.Price, TestData);
-        }
-
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
