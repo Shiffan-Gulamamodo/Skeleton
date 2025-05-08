@@ -81,6 +81,7 @@ namespace Testing4
             Assert.AreEqual(AnOrder.OrderLineID, TestData);
         }
 
+
         [TestMethod]
         public void FindMethodOK()
         {
@@ -89,7 +90,9 @@ namespace Testing4
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            int OrderID = 21;
+
+            int OrderID = 1;
+
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //test to see that the result is correct
@@ -103,9 +106,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            int OrderID = 21;
+            int OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderID != 21)
+            if (AnOrder.OrderID != 1)
             {
                 OK = false;
             }
@@ -118,9 +121,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            int OrderID = 21;
+            int OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.StaffID != 21)
+            if (AnOrder.StaffID != 101)
             {
                 OK = false;
             }
@@ -133,9 +136,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            int OrderID = 21;
+            int OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderDate != Convert.ToDateTime("21/12/2025"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("01/05/2025"))
             {
                 OK = false;
             }
@@ -148,9 +151,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            int OrderID = 21;
+            int OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.CustomerID != 21)
+            if (AnOrder.CustomerID != 1001)
             {
                 OK = false;
             }
@@ -163,7 +166,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            int OrderID = 21;
+            int OrderID = 1;
             Found = AnOrder.Find(OrderID);
             if (AnOrder.IsPaid != true)
             {
@@ -178,9 +181,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            int OrderID = 21;
+            int OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderLineID != 21)
+            if (AnOrder.OrderLineID != 5001)
             {
                 OK = false;
             }
@@ -193,13 +196,14 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            int OrderID = 21;
+            int OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.DeliveryAddress != "123 Test Street")
+            if (AnOrder.DeliveryAddress != "123 Main St")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
+
     }
 }

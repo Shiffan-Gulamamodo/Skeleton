@@ -98,16 +98,26 @@ namespace ClassLibrary
 
         public bool Find(int orderID)
         {
-            mOrderID = 21;
-            mStaffID = 21;
-            mOrderDate = Convert.ToDateTime("21/12/2025");
-            mCustomerID = 21;
-            mIsPaid = true;
-            mDeliveryAddress = "123 Test Street";
-            mOrderLineID = 21;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", orderID);
+            DB.Execute("sproc_tblOrder_FilterByOrderID");
+            if (DB.Count == 1)
+            {
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mIsPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["IsPaid"]);
+                mDeliveryAddress = Convert.ToString(DB.DataTable.Rows[0]["DeliveryAddress"]);
+                mOrderLineID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineID"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
             
-        
+      
     }
 }
