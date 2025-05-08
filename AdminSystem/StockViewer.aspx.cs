@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using ClassLibrary;
 public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -21,6 +21,9 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("Stock Id: "+AStock.StockID + "<br/>");
         //display the supplier ID
         Response.Write("Supplier Id: "+AStock.SupplierID + "<br/>");
+        Response.Write("Stock ID: "+AStock.StockID + "<br/>");
+        //display the supplier ID
+        Response.Write("Supplier ID: "+AStock.SupplierID + "<br/>");
         //display the date added
         Response.Write("Date Added: "+AStock.DateAdded + "<br/>");
         //display the price

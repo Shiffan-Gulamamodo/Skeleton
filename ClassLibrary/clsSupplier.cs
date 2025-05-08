@@ -1,20 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
-namespace Testing5
+namespace ClassLibrary
 {
-    [TestClass]
-    public class tstSupplier
+    public class clsSupplier
     {
-        [TestMethod]
-        public void InstanceOK()
-        {
-            clsSupplier ASupplier = new clsSupplier();
-            Assert.IsNotNull(ASupplier);
-        }
-    }
-
-    internal class clsSupplier
-    {
+        public decimal Price { get; set; }
+        public Boolean IsAvailable { get; set; }
+        public int StockID { get; set; }
+        public int SupplyId { get; set; }
+        public string PhoneName { get; set; }
+        public DateTime DeliveryDate { get; set; }
     }
 }

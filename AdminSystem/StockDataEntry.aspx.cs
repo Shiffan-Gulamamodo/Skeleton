@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
@@ -23,6 +24,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the stock Id
         AStock.StockID = Convert.ToInt32(txtStockID.Text);
         //capture the supplier Id
+        //capture the stock ID
+        AStock.StockID = Convert.ToInt32(txtStockID.Text);
+        //capture the supplier ID
         AStock.SupplierID = Convert.ToInt32(txtSupplierID.Text);
         //capture the date added
         AStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);

@@ -4,10 +4,6 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
-        public clsStaff()
-        {
-        }
-
         public bool isActive { get; set; }
         public DateTime lastUpdated { get; set; }
         public int StaffId { get; set; }
