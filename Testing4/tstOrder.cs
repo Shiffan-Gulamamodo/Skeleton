@@ -81,8 +81,7 @@ namespace Testing4
             Assert.AreEqual(AnOrder.OrderLineID, TestData);
         }
 
-<<<<<<< Updated upstream
-=======
+
         [TestMethod]
         public void FindMethodOK()
         {
@@ -91,7 +90,9 @@ namespace Testing4
             //boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
+
             int OrderID = 1;
+
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //test to see that the result is correct
@@ -203,6 +204,6 @@ namespace Testing4
             }
             Assert.IsTrue(OK);
         }
->>>>>>> Stashed changes
+
     }
 }
