@@ -21,6 +21,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AStock.ProductName = txtProductName.Text;
         //capture the stock quantity
         AStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
+        //capture the stock Id
+        AStock.StockID = Convert.ToInt32(txtStockID.Text);
+        //capture the supplier Id
         //capture the stock ID
         AStock.StockID = Convert.ToInt32(txtStockID.Text);
         //capture the supplier ID

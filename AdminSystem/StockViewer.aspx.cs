@@ -18,6 +18,9 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the stock quantity
         Response.Write("Stock Quantity: "+AStock.StockQuantity + "<br/>");
         //display the stock ID
+        Response.Write("Stock Id: "+AStock.StockID + "<br/>");
+        //display the supplier ID
+        Response.Write("Supplier Id: "+AStock.SupplierID + "<br/>");
         Response.Write("Stock ID: "+AStock.StockID + "<br/>");
         //display the supplier ID
         Response.Write("Supplier ID: "+AStock.SupplierID + "<br/>");
