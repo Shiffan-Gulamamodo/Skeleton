@@ -81,5 +81,125 @@ namespace Testing4
             Assert.AreEqual(AnOrder.OrderLineID, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //boolean variable to store the result of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            int OrderID = 21;
+            //invoke the method
+            Found = AnOrder.Find(OrderID);
+            //test to see that the result is correct
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+
+        public void TestOrderIDFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            int OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.OrderID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffIDFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            int OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.StaffID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            int OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.OrderDate != Convert.ToDateTime("21/12/2025"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            int OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.CustomerID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestIsPaidFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            int OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.IsPaid != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderLineIDFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            int OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.OrderLineID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDeliveryAddressFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            int OrderID = 21;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.DeliveryAddress != "123 Test Street")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
