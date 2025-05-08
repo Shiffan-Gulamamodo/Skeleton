@@ -138,7 +138,7 @@ namespace Testing2
             //Invoke the method 
             Found = ACustomer.Find(CustomerId);
             //Checking the Address Id 
-            if (ACustomer.CustomerId != 5)
+            if (ACustomer.CustomerId != 4)
             {
                 OK = false;
             }

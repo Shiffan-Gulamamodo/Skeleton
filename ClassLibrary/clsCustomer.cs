@@ -111,18 +111,36 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int customerId)
+        public bool Find(int CustomerId)
         {
-            //Set the private Data Members to the test data value 
-            mCustomerId = 5;
-            mCustomerAccountCreatedAt = Convert.ToDateTime("27/04/2025");
-            mIsCustomerAccountActive = true;
-            mCustomerFullName = "Sam Curran";
-            mCustomerEmail = "Sam@gmail.com";
-            mCustomerPassword = "CurranCurran";
-            mCustomerAddress = "CV10 2ER, 2 Kings Avenue, Nuneaton";
-            //Always returns true
-            return true;
+
+            //Create an instance of the Data Connection 
+            clsDataConnection DB = new clsDataConnection();
+            //Add the Parameter for the Customer Id to search for 
+            DB.AddParameter("@CustomerId", CustomerId);
+            //Execute the stored procedure 
+            DB.Execute("sproc_tblCustomer_FilterByCustomerId");
+            //If one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //Copying the data from the database to the private data members
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mCustomerAccountCreatedAt = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerAccountCreatedAt"]);
+                mIsCustomerAccountActive = Convert.ToBoolean(DB.DataTable.Rows[0]["IsCustomerAccountActive"]);
+                mCustomerFullName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFullName"]);
+                mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
+                mCustomerPassword = Convert.ToString(DB.DataTable.Rows[0]["CustomerPassword"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                //Always returns true
+                return true;
+            }
+            //If no record was found 
+            else
+            {
+                //Return false indicating there is a problem 
+                return false;
+            }
+
         }
     }
 }
