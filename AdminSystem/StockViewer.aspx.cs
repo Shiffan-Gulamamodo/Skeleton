@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,13 +17,10 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("Product Name: "+AStock.ProductName + "<br/>");
         //display the stock quantity
         Response.Write("Stock Quantity: "+AStock.StockQuantity + "<br/>");
-        //display the stock ID
-        Response.Write("Stock Id: "+AStock.StockID + "<br/>");
+      
+        Response.Write("Stock ID: "+ AStock.StockId + "<br/>");
         //display the supplier ID
-        Response.Write("Supplier Id: "+AStock.SupplierID + "<br/>");
-        Response.Write("Stock ID: "+AStock.StockID + "<br/>");
-        //display the supplier ID
-        Response.Write("Supplier ID: "+AStock.SupplierID + "<br/>");
+        Response.Write("Supplier ID: "+ AStock.SupplierId + "<br/>");
         //display the date added
         Response.Write("Date Added: "+AStock.DateAdded + "<br/>");
         //display the price
