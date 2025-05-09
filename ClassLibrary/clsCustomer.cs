@@ -142,5 +142,24 @@ namespace ClassLibrary
             }
 
         }
+
+        public string Valid(string customerFullName, string customerEmail, string customerPassword, string customerAddress, string customerAccountCreatedAt)
+        {
+            //Creating a String Variable to store the error 
+            String Error = ""; 
+            //If the CustomerFullName is blank 
+            if (customerFullName.Length == 0)
+            {
+                //Record the error 
+                Error = Error + "The Customer Full Name may not be blank : ";
+            }
+            //If the Customer Full Name is greater than 30 characters 
+            if (customerEmail.Length > 30)
+            {
+                Error = Error + "The Customer Full Name must be less than 30 characters : "; 
+            }
+            //Return any error messages 
+            return Error;
+        }
     }
 }
