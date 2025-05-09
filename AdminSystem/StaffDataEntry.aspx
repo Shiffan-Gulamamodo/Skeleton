@@ -14,6 +14,8 @@
             <asp:Label ID="lblStaffId" runat="server" style="z-index: 1; left: 10px; top: 53px; position: absolute; right: 1285px" Text="Staff ID" width="101px"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtStaffId" runat="server" style="z-index: 1; left: 122px; top: 53px; position: absolute; width: 120px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </p>
         <p>
             <asp:Label ID="lblStaffFullName" runat="server" style="z-index: 1; left: 10px; top: 91px; position: absolute; width: 101px;" Text="Staff FullName"></asp:Label>
@@ -35,7 +37,7 @@
         <p>
             <asp:Label ID="lblLastUpdated" runat="server" style="z-index: 1; left: 10px; top: 205px; position: absolute; right: 1309px" Text="Last Updated" width="101px"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtLastUpdated" runat="server" style="z-index: 1; left: 122px; top: 205px; position: absolute; width: 120px" TextMode="DateTimeLocal"></asp:TextBox>
+            <asp:TextBox ID="txtLastUpdated" runat="server" style="z-index: 1; left: 122px; top: 205px; position: absolute; width: 120px" TextMode="DateTime"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblRole" runat="server" style="z-index: 1; left: 10px; top: 243px; position: absolute" Text="Role" width="101px"></asp:Label>

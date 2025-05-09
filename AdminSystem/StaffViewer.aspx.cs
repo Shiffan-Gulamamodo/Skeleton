@@ -18,6 +18,8 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AStaff.StaffId + "<br/>");
         //display the FullName for this entry
         Response.Write(AStaff.StaffFullName + "<br/>");
+        //display the Email for this entry
+        Response.Write(AStaff.Email + "<br/>");
         //display the Last Updated Changes
         Response.Write(AStaff.lastUpdated + "<br/>");
         //display the Staff's role
