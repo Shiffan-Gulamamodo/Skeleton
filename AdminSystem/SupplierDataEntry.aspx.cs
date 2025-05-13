@@ -33,6 +33,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void txtDeliveryDate_TextChanged(object sender, EventArgs e)
     {
 
+
     }
 
     protected void chkIsAvailable_CheckedChanged(object sender, EventArgs e)

@@ -12,10 +12,10 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clsSupplier ASupplier = new clsSupplier();
         ASupplier = (clsSupplier)Session["ASupplier"];
-        Response.Write(ASupplier.SupplyId);
-        Response.Write(ASupplier.StockID);
-        Response.Write(ASupplier.PhoneName);
-        Response.Write(ASupplier.DeliveryDate);
+        Response.Write(ASupplier.SupplyId + "</br>");
+        Response.Write(ASupplier.StockID + "</br>");
+        Response.Write(ASupplier.PhoneName + "</br>");
+        Response.Write(ASupplier.DeliveryDate + "</br>");
         Response.Write(ASupplier.IsAvailable);
     }
 }
