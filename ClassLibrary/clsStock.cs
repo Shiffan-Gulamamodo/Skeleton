@@ -125,18 +125,36 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int stockID)
+        /****** FIND METHOD ******/
+        public bool Find(int StockID)
         {
-            //set the private data memebers to the test data value
-            mStockId = 9;
-            mSupplierId = 5;
-            mDateAdded = Convert.ToDateTime("10/03/2025");
-            mProductName = "Samsung Galaxy S23";
-            mPrice = 850;
-            mStockQuantity = 40;
-            mInStock = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the stock id to search for
+            DB.AddParameter("@StockId", StockID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByStockId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //get the data from the database
+                mStockId = Convert.ToInt32(DB.DataTable.Rows[0]["StockId"]);
+                mSupplierId = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierId"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+         
         }
 
     }

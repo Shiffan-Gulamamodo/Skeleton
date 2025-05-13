@@ -14,7 +14,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         AStock = (clsStock)Session["AStock"];
         //display the product name
-        Response.Write("Product Name: "+AStock.ProductName + "<br/>");
+        Response.Write("Product Name: " + AStock.ProductName + "<br/>");
         //display the stock quantity
         Response.Write("Stock Quantity: "+AStock.StockQuantity + "<br/>");
       

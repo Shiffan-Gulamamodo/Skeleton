@@ -17,9 +17,10 @@
         </div>
         <p>
             <asp:TextBox ID="txtStockID" runat="server" style="z-index: 1; left: 137px; top: 33px; position: absolute; bottom: 811px;" height="22px" width="128px"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="margin-left: 338px; margin-bottom: 0px" Text="Find" Width="60px" height="26px" />
         </p>
         <p>
-            <asp:Label ID="lblStockID" runat="server" style="z-index: 1; left: 14px; top: 34px; position: absolute" Text="Stock ID" width="102px"></asp:Label>
+            <asp:Label ID="lblStockID" runat="server" style="z-index: 1; left: 13px; top: 36px; position: absolute; right: 1440px;" Text="Stock ID" width="102px"></asp:Label>
             <asp:Label ID="lblSupplierID" runat="server" style="z-index: 1; left: 14px; top: 72px; position: absolute" Text="Supplier ID" width="102px"></asp:Label>
             <asp:TextBox ID="txtSupplierID" runat="server" style="z-index: 1; left: 137px; top: 70px; position: absolute" height="22px" width="128px"></asp:TextBox>
         </p>

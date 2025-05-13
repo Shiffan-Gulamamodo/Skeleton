@@ -175,11 +175,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockId = 9;
+            Int32 StockId = 7;
             //invoke the method
             Found = AStock.Find(StockId);
             //check the dateAdded property
-            if (AStock.DateAdded != Convert.ToDateTime("10/03/2025"))
+            if (AStock.DateAdded != Convert.ToDateTime("28/02/2025"))
             {
                 OK = false;
             }
@@ -201,7 +201,7 @@ namespace Testing3
             //invoke the method
             Found = AStock.Find(StockId);
             //check the stock ID
-            if (AStock.ProductName != "Samsung Galaxy S23")
+            if (AStock.ProductName != "Xiaomi Mi 13")
             {
                 OK = false;
             }
@@ -224,7 +224,7 @@ namespace Testing3
             //invoke the method
             Found = AStock.Find(StockId);
             //check the stock ID
-            if (AStock.Price != 850)
+            if (AStock.Price != 599)
             {
                 OK = false;
             }
@@ -247,7 +247,7 @@ namespace Testing3
             //invoke the method
             Found = AStock.Find(StockId);
             //check the stock ID
-            if (AStock.StockQuantity != 40)
+            if (AStock.StockQuantity != 5)
             {
                 OK = false;
             }
