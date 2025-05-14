@@ -17,24 +17,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
-        //capture the product name
-        AStock.ProductName = txtProductName.Text;
-        //capture the stock quantity
-        AStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
-        //capture the stock ID
-        AStock.StockId = Convert.ToInt32(txtStockID.Text);
-        //capture the supplier ID
-        AStock.SupplierId = Convert.ToInt32(txtSupplierID.Text);
-        //capture the date added
-        AStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+        //capture the supplier id
+        string SupplierId = txtSupplierID.Text;
+        //capture the Product Name
+        string ProductName = txtProductName.Text;
         //capture the price
-        AStock.Price = Convert.ToDecimal(txtPrice.Text);
-        //capture the in stock status
-        AStock.InStock = chkInStock.Checked;
-        //store the stock data in the session object
-        Session["AStock"] = AStock;
-        //navigate to the view page
-        Response.Redirect("StockViewer.aspx");
+        string Price = txtPrice.Text;
+        //capture the stock quantity
+        string StockQuantity = txtStockQuantity.Text;
+        //capture the Date Added
+        string DateAdded = txtDateAdded.Text;
+        //capture the in stock check box
+        string InStock = chkInStock.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AStock.Valid(ProductName, DateAdded);
+        if (Error == "")
+        {
+            //capture the Product Name
+            AStock.ProductName = ProductName;
+            //capture the Date Added
+            AStock.DateAdded = Convert.ToDateTime(DateAdded);
+            //store the stock in the session object
+            Session["AStock"] = AStock;
+            //navigate to the view page
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
