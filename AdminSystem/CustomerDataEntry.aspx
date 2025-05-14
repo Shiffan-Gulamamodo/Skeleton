@@ -44,12 +44,20 @@
             <asp:Label ID="lblCustomerAddress" runat="server" style="z-index: 1; left: 10px; top: 223px; position: absolute" Text="Customer Address" width="186px"></asp:Label>
         </p>
         <p>
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 337px; position: absolute"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 337px; position: absolute" Font-Bold="True" ForeColor="Red"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 139px; top: 365px; position: absolute; width: 123px" Text="Ok" OnClick="btnOK_Click" />
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 270px; top: 364px; position: absolute; width: 123px" Text="Cancel" />
+            <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 122px; top: 393px; position: absolute; width: 123px" Text="Ok" OnClick="btnOK_Click" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 268px; top: 394px; position: absolute; width: 123px" Text="Cancel" />
         </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
         <asp:TextBox ID="txtCustomerId" runat="server" BorderColor="Black" style="z-index: 1; left: 221px; top: 74px; position: absolute" height="22px" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtCustomerFullName" runat="server" BorderColor="Black" style="z-index: 1; left: 221px; top: 107px; position: absolute" height="22px" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtCustomerEmail" runat="server" BorderColor="Black" style="z-index: 1; left: 221px; top: 147px; position: absolute" height="22px" TextMode="Email" width="128px"></asp:TextBox>

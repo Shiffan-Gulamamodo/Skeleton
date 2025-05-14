@@ -27,24 +27,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create a new instance of clsCustomer 
         clsCustomer ACustomer = new clsCustomer();
-        //Capture the Customer Id 
-        ACustomer.CustomerId = Convert.ToInt32(txtCustomerId.Text);
         //Capture the Customer FullName 
-        ACustomer.CustomerFullName = txtCustomerFullName.Text;
+        string CustomerFullName = txtCustomerFullName.Text;
         //Capture the Customer Email
-        ACustomer.CustomerEmail = txtCustomerEmail.Text;
+        string CustomerEmail = txtCustomerEmail.Text;
         //Capture the Customer Password
-        ACustomer.CustomerPassword = txtCustomerPassword.Text;
+        string CustomerPassword = txtCustomerPassword.Text;
         //Capture the Customer Address
-        ACustomer.CustomerAddress = txtCustomerAddress.Text;
+        string CustomerAddress = txtCustomerAddress.Text;
         //Capture the Customer Account Created At
-        ACustomer.CustomerAccountCreatedAt = Convert.ToDateTime(DateTime.Now);
+        string CustomerAccountCreatedAt = txtCustomerAccountCreatedAt.Text;
         //Capture Active Check Box 
-        ACustomer.IsCustomerAccountActive= chkIsCustomerAccountActive.Checked;
-        //Stores the Customer Full Name in the session Object 
-        Session["ACustomer"] = ACustomer;
-        //Navigate to the View Page
-        Response.Redirect("CustomerViewer.aspx");
+        string IsCustomerAccountActive= chkIsCustomerAccountActive.Text;
+        //Variable to store any error messages
+        string Error = "";
+        //Validate the data 
+        Error = ACustomer.Valid(CustomerFullName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerAccountCreatedAt);
+        if (Error == "")
+        {
+            //Capture the Customer Full Name 
+            ACustomer.CustomerFullName = CustomerFullName;
+            //Capture the Customer Email 
+            ACustomer.CustomerEmail = CustomerEmail;
+            //Capture the Customer Password 
+            ACustomer.CustomerPassword = CustomerPassword;
+            //Capture the Customer Address 
+            ACustomer.CustomerAddress = CustomerAddress;
+            //Capture the Customer Account Created At 
+            ACustomer.CustomerAccountCreatedAt = Convert.ToDateTime(CustomerAccountCreatedAt);
+            //Stores the Customer Full Name in the session Object 
+            Session["ACustomer"] = ACustomer;
+            //Navigate to the View Page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+
+        else
+        {
+            //Display the Error Message 
+            lblError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
