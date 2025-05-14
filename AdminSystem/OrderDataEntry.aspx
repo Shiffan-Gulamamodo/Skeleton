@@ -24,7 +24,7 @@
         <asp:TextBox ID="txtDeliveryAddress" runat="server" style="z-index: 1; left: 148px; top: 180px; position: absolute"></asp:TextBox>
         <p>
             &nbsp;</p>
-        <asp:CheckBox ID="chkIsPaid" runat="server" style="z-index: 1; left: 154px; top: 266px; position: absolute; margin-bottom: 0px" Text="Is Paid" />
+        <asp:CheckBox ID="chkIsPaid" runat="server" style="z-index: 1; left: 347px; top: 218px; position: absolute; margin-bottom: 0px" Text="Is Paid" />
         <p>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 22px; top: 269px; position: absolute"></asp:Label>
         </p>
