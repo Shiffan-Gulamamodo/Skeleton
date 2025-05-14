@@ -16,13 +16,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOk_Click(object sender, EventArgs e)
     {
         clsSupplier ASupplier = new clsSupplier();
-        ASupplier.SupplyId = Convert.ToInt32(txtSupplierID.Text);
-        ASupplier.StockID = Convert.ToInt32(txtStockID.Text);
-        ASupplier.PhoneName = txtPhoneName.Text;
-        ASupplier.DeliveryDate = Convert.ToDateTime(txtDeliveryDate.Text);
-        ASupplier.IsAvailable = chkIsAvailable.Checked;
-        Session["ASupplier"] = ASupplier;
-        Response.Redirect("SupplierViewer.aspx");
+        string PhoneName = txtPhoneName.Text;
+        string DeliveryDate = txtDeliveryDate.Text;
+        bool IsAvailable = chkIsAvailable.Checked;
+        string Error = "";
+        if (Error == "")
+        {
+            ASupplier.PhoneName = PhoneName;
+            ASupplier.DeliveryDate = Convert.ToDateTime(DeliveryDate);
+            ASupplier.IsAvailable = Convert.ToBoolean(IsAvailable);
+            Session["ASupplier"] = ASupplier;
+            Response.Redirect("SupplierViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void TextBox2_TextChanged(object sender, EventArgs e)
