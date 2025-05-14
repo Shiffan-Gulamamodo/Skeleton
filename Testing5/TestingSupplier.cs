@@ -7,6 +7,9 @@ namespace Testing5
     [TestClass]
     public class TestingSupplier
     {
+        string PhoneName = "Jervin";
+        string DeliveryDate = "10/02/2024";
+        string IsAvailable = "False";
 
         [TestMethod]
         public void InstanceOK()
@@ -24,7 +27,7 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
             //create some test data to assign to the property
             Boolean TestData = true;  // Change to match your actual test data for availability
-                                   //assign the data to the property
+                                      //assign the data to the property
             ASupplier.IsAvailable = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(ASupplier.IsAvailable, TestData);
@@ -179,7 +182,7 @@ namespace Testing5
             //Invoke the method 
             Found = ASupplier.Find(SupplyId);
             //check the street property
-            if (ASupplier.PhoneName!= "Iphone 14")
+            if (ASupplier.PhoneName != "Iphone 14")
             {
                 OK = false;
             }
@@ -209,8 +212,269 @@ namespace Testing5
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = ASupplier.Valid(PhoneName, DeliveryDate, IsAvailable);
 
 
 
+
+
+
+
+
+
+
+
+
+        }
+        [TestMethod]
+        public void PhoneNameMinLessOne()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating some test data to pass the method
+            String PhoneName = "";   // This should trigger an error
+                                     // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNameMin()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating some test data to pass the method
+            String PhoneName = "S";   // This should be OK
+                                      // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNameMinPlusOne()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating some test data to pass the method
+            String PhoneName = "Sa";   // This should be OK
+                                       // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNameMaxLessOne()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating some test data to pass the method
+            String PhoneName = "";
+            PhoneName = PhoneName.PadRight(29, 's');  // This should be OK
+                                                      // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNameMax()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating some test data to pass the method
+            String PhoneName = "";
+            PhoneName = PhoneName.PadRight(30, 's');  // This should be OK
+                                                      // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNameMid()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating some test data to pass the method
+            String PhoneName = "";
+            PhoneName = PhoneName.PadRight(15, 's');  // This should be OK
+                                                      // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNameMaxPlusOne()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating some test data to pass the method
+            String PhoneName = "";
+            PhoneName = PhoneName.PadRight(31, 's');  // This should Fail
+                                                      // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNameExtremeMax()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating some test data to pass the method
+            String PhoneName = "";
+            PhoneName = PhoneName.PadRight(500, 's');  // This should Fail
+                                                       // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryDateExtremeMin()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating a variable to store the test date data
+            DateTime TestDate;
+            // Set the data to today's date
+            TestDate = DateTime.Now.Date;
+            // Change the date to whatever the date is minus 100 years
+            TestDate = TestDate.AddYears(-100);
+            // Convert the date variable to a string variable
+            String DeliveryDate = TestDate.ToString();
+            // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryDateMinLessOne()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating a variable to store the test date data
+            DateTime TestDate;
+            // Set the date to today's date
+            TestDate = DateTime.Now.Date;
+            // Change the date to whatever the date is minus 1 day
+            TestDate = TestDate.AddDays(-1);
+            // Convert the date variable to a string variable
+            String DeliveryDate = TestDate.ToString();
+            // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryDateMin()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating a variable to store the test date data
+            DateTime TestDate;
+            // Set the date to today's date
+            TestDate = DateTime.Now.Date;
+            // Convert the date variable to a string variable
+            String DeliveryDate = TestDate.ToString();
+            // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryDateMinPlusOne()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating a variable to store the test date data
+            DateTime TestDate;
+            // Set the date to today's date
+            TestDate = DateTime.Now.Date;
+            // Change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            // Convert the date variable to a string variable
+            String DeliveryDate = TestDate.ToString();
+            // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryDateExtremeMax()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating a variable to store the test date data
+            DateTime TestDate;
+            // Set the date to today's date
+            TestDate = DateTime.Now.Date;
+            // Change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            // Convert the date variable to a string variable
+            String DeliveryDate = TestDate.ToString();
+            // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void IsAvailableInvalidData()
+        {
+            // Create an instance of the class we want to test
+            clsSupplier ASupplier = new clsSupplier();
+            // String variable to store any error message
+            String Error = "";
+            // Creating an invalid data for IsAvailable
+            String IsAvailable = "NotBoolean";  // Invalid value
+                                                // Invoke the method
+            Error = ASupplier.Valid(PhoneName, IsAvailable, DeliveryDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
     }
 }

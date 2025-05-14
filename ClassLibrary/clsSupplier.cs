@@ -16,7 +16,8 @@ namespace ClassLibrary
         //Creating Private Data Member for the Phone Name Property
         private String mPhoneName;
 
-        public string PhoneName {
+        public string PhoneName
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -28,7 +29,8 @@ namespace ClassLibrary
                 mPhoneName = value;
             }
         }
-        public int SupplyId {
+        public int SupplyId
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -40,7 +42,8 @@ namespace ClassLibrary
                 mSupplyId = value;
             }
         }
-        public int StockID {
+        public int StockID
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -52,7 +55,8 @@ namespace ClassLibrary
                 mStockId = value;
             }
         }
-        public bool IsAvailable {
+        public bool IsAvailable
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -64,7 +68,8 @@ namespace ClassLibrary
                 mIsAvailable = value;
             }
         }
-        public DateTime DeliveryDate {
+        public DateTime DeliveryDate
+        {
             get
             {
                 //this line of code sends data out of the property
@@ -78,18 +83,37 @@ namespace ClassLibrary
         }
 
 
-        public bool Find(object SupplyId)
+        public bool Find(int SupplyId)
         {
-            //set the private data members to the test data value
-            mSupplyId = 4;
-            mDeliveryDate = Convert.ToDateTime("25/05/2025 00:00:00");
-            mIsAvailable = false;
-            mStockId = 3;
-            mPhoneName = "Iphone 14";
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search fpr
+            DB.AddParameter("@SupplyID", SupplyId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblSupplier_FilterBySupplyId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //Copy the data from the database to the prive data members
+                mSupplyId = Convert.ToInt32(DB.DataTable.Rows[0]["SupplyId"]);
+                mDeliveryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DeliveryDate"]);
+                mIsAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["IsAvailable"]);
+                mStockId = Convert.ToInt32(DB.DataTable.Rows[0]["StockId"]);
+                mPhoneName = Convert.ToString(DB.DataTable.Rows[0]["PhoneName"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indication there is a problem
+                return false;
+            }
+        }
 
-            //always return true
-            return true;
+        public string Valid(string PhoneName, string DeliveryDate, string sAvailable)
+        {
+            return"";
         }
     }
-        
 }
