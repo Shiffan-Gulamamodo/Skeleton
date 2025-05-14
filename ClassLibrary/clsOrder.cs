@@ -11,7 +11,7 @@ namespace ClassLibrary
         private bool mIsPaid;
         private string mDeliveryAddress;
         private int mOrderLineID;
-        public int OrderID 
+        public int OrderID
         {
             get
             {
@@ -117,7 +117,37 @@ namespace ClassLibrary
                 return false;
             }
         }
-            
-      
+
+        public string Valid(string deliveryAddress, string orderDate)
+        {
+            string Error = "";
+            DateTime DateTemp;
+            DateTime DateComp = DateTime.Now.Date;
+            if (deliveryAddress.Length == 0)
+            {
+                Error = Error + "The delivery address may not be blank : ";
+            }
+            if (deliveryAddress.Length > 50)
+            {
+                Error = Error + "The delivery address must be less than 50 characters : ";
+            }    
+            try
+            { 
+                DateTemp = Convert.ToDateTime(orderDate);
+                if(DateTemp < DateComp)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if(DateTemp >  DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+            return Error;
+        }
     }
 }
