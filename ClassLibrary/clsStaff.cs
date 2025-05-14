@@ -133,5 +133,84 @@ namespace ClassLibrary
             }
             
         }
+
+        public string Valid(string staffFullName, string staffPassword, string email, string lastUpdated, string role)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //if the Staff FullName is blank
+            if (staffFullName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Staff Full Name may not be blank : ";
+            }
+            if (staffFullName.Length > 20)
+            {
+                Error = Error + "The Staff Full Name must be less than 20 : ";
+            }
+
+            //lastUpdated
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the lastUpdated value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(lastUpdated);
+                //check to see if the date is less than todays date
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //Staff Password
+            if (staffPassword.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Staff Full Name may not be blank : ";
+            }
+            if (staffPassword.Length > 30)
+            {
+                Error = Error + "The Staff Full Name must be less than 30 : ";
+            }
+
+            //Email
+            if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Email may not be blank : ";
+            }
+            if (email.Length > 40)
+            {
+                Error = Error + "The Email must be less than 40 : ";
+            }
+
+            //Role
+            if (role.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Role may not be blank : ";
+            }
+            if (role.Length > 30)
+            {
+                Error = Error + "The Role must be less than 30 : ";
+            }
+            //return any error messages
+            return Error;
+            }
+            
     }
 }
