@@ -47,8 +47,8 @@
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 337px; position: absolute" Font-Bold="True" ForeColor="Red"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 122px; top: 393px; position: absolute; width: 123px" Text="Ok" OnClick="btnOK_Click" />
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 268px; top: 394px; position: absolute; width: 123px" Text="Cancel" />
+            <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 111px; top: 479px; position: absolute; width: 123px" Text="Ok" OnClick="btnOK_Click" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 274px; top: 477px; position: absolute; width: 123px" Text="Cancel" />
         </p>
         <p>
             &nbsp;</p>

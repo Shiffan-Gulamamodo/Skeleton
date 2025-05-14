@@ -154,13 +154,13 @@ namespace ClassLibrary
             if (customerFullName.Length == 0)
             {
                 //Record the error
-                Error = Error + "The Customer Full Name may not be blank : ";
+                Error = Error + "The Customer Full Name may not be blank" + "</br>";
             }
 
             //If the Customer Full Name is greater than 30 characters 
             if (customerFullName.Length > 30)
             {
-                Error = Error + "The Customer Full Name must be less than 30 characters : ";
+                Error = Error + "The Customer Full Name must be less than 30 characters" + "</br>";
             }
 
             //Create an instance of Date Time to compare to compare with DateTemp
@@ -174,14 +174,14 @@ namespace ClassLibrary
                 if (DateTemp < DateComp) //Compare CustomerAccountCreatedAt 
                 {
                     //Record the error 
-                    Error = Error + "The Date cannot be in the past : ";
+                    Error = Error + "The Date cannot be in the past" + "</br>";
                 }
 
                 //Check to see if the date is greater than today's date 
                 if (DateTemp > DateComp)
                 {
                     //Record the error 
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "The date cannot be in the future" + "</br>";
                 }
 
             }
@@ -189,46 +189,46 @@ namespace ClassLibrary
             catch
             {
                 //Record the Error 
-                Error = Error + "The Date cannot be in the past : "; 
+                Error = Error + "The Date cannot be in the past" + "</br>"; 
             }
 
             //If the Customer Email is blank 
             if (customerEmail.Length == 0)
             {
                 //Record the error
-                Error = Error + "The Customer Email may not be blank : ";
+                Error = Error + "The Customer Email may not be blank" + "</br>";
             }
 
             //If the Customer Email is greater than 40 characters 
             if (customerEmail.Length > 40)
             {
-                Error = Error + "The Customer Email must be less than 40 characters : ";
+                Error = Error + "The Customer Email must be less than 40 characters" + "</br>";
             }
 
             //If the Customer Password is blank 
             if (customerPassword.Length == 0)
             {
                 //Record the error -
-                Error = Error + "The Customer Password may not be blank : ";
+                Error = Error + "The Customer Password may not be blank" + "</br>";
             }
 
             //If the Customer Password is greater than 30 characters 
             if (customerPassword.Length > 30)
             {
-                Error = Error + "The Customer Password must be less than 30 characters : ";
+                Error = Error + "The Customer Password must be less than 30 characters" + "</br>";
             }
 
             //If the Customer Address is blank 
             if (customerAddress.Length == 0)
             {
                 //Record the error -
-                Error = Error + "The Customer Address may not be blank : ";
+                Error = Error + "The Customer Address may not be blank" + "</br>";
             }
 
             //If the Customer Address is greater than 50 characters 
             if (customerAddress.Length > 50)
             {
-                Error = Error + "The Customer Address must be less than 50 characters : ";
+                Error = Error + "The Customer Address must be less than 50 characters" + "</br>";
             }
 
             //Return any error messages 
