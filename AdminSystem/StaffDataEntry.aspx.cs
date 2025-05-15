@@ -18,24 +18,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
-        //capture the Staff's ID
-        AStaff.StaffId = Convert.ToInt32(txtStaffId.Text);
         //capture the Staff's FullName
-        AStaff.StaffFullName = txtStaffFullName.Text;
+        string StaffFullName = txtStaffFullName.Text;
         //capture the Staff's Password
-        AStaff.StaffPassword = txtStaffPassword.Text;
+        string StaffPassword = txtStaffPassword.Text;
         //capture the Staff's Email
-        AStaff.Email = txtEmail.Text;
+        string Email = txtEmail.Text;
         //capture the Staff's Last Updated changes
-        AStaff.lastUpdated = DateTime.Now;
+        string lastUpdated = txtLastUpdated.Text;
         //capture the Staff's Role
-        AStaff.Role = txtRole.Text;
-        //caoture isActive checkbox
-        AStaff.isActive = chkActive.Checked;
+        string Role = txtRole.Text;
+        //capture isActive checkbox
+        string isActive = chkActive.Text;
         //store the Staff Data in the session object
-        Session["AStaff"] = AStaff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        string Error = "";
+        //validate the data
+        Error = AStaff.Valid(StaffFullName, StaffPassword, Email, lastUpdated, Role);
+        if (Error == "")
+        {
+            //capture the Staff's Full Name
+            AStaff.StaffFullName = StaffFullName;
+            //capture the Staff's Password
+            AStaff.StaffPassword = StaffPassword;
+            //capture the Staff's Email
+            AStaff.Email = Email;
+            //capture the Staff's lastUpdated changes
+            AStaff.lastUpdated = Convert.ToDateTime(lastUpdated);
+            //capture the Staff's Role
+            AStaff.Role = Role;
+            Session["AStaff"] = AStaff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
