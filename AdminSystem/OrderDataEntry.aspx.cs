@@ -17,7 +17,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsOrder AnOrder = new clsOrder();
         string DeliveryAddress = txtDeliveryAddress.Text;
-        string OrderID = txtOrderId.Text;
+        int OrderID = int.Parse(txtOrderId.Text);
         string StaffID = txtStaffId.Text;
         string OrderDate = txtOrderDate.Text;
         string CustomerID = txtCustomerId.Text;
