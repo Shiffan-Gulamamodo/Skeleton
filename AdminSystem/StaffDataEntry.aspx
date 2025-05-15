@@ -52,9 +52,9 @@
         </p>
         <p>
             &nbsp;
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 19px; top: 357px; position: absolute" Text="OK" width="60px" />
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 121px; top: 414px; position: absolute" Text="OK" width="60px" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 121px; top: 357px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 191px; top: 414px; position: absolute" Text="Cancel" />
         </p>
     </form>
 </body>

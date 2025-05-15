@@ -144,11 +144,33 @@ namespace ClassLibrary
             if (staffFullName.Length == 0)
             {
                 //record the error
-                Error = Error + "The Staff Full Name may not be blank : ";
+                Error = Error + "The Staff Full Name may not be blank : </br>";
             }
             if (staffFullName.Length > 20)
             {
-                Error = Error + "The Staff Full Name must be less than 20 : ";
+                Error = Error + "The Staff Full Name must be less than 20 : </br>";
+            }
+
+            //Staff Password
+            if (staffPassword.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Staff Password may not be blank : </br>";
+            }
+            if (staffPassword.Length > 30)
+            {
+                Error = Error + "The Staff Password must be less than 30 : </br>";
+            }
+
+            //Email
+            if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Email may not be blank : </br>";
+            }
+            if (email.Length > 40)
+            {
+                Error = Error + "The Email must be less than 40 : </br>";
             }
 
             //lastUpdated
@@ -161,52 +183,29 @@ namespace ClassLibrary
                 //check to see if the date is less than todays date
                 if (DateTemp < DateComp)
                 {
-                    Error = Error + "The date cannot be in the past : ";
+                    Error = Error + "The date cannot be in the past : </br>";
                 }
                 //check to see if the date is greater than today's date
                 if (DateTemp > DateComp)
                 {
-                    Error = Error + "The date cannot be in the future : ";
+                    Error = Error + "The date cannot be in the future : </br>";
                 }
             }
 
             catch
             {
                 //record the error
-                Error = Error + "The date was not a valid date : ";
+                Error = Error + "The date was not a valid date : </br>";
             }
-
-            //Staff Password
-            if (staffPassword.Length == 0)
-            {
-                //record the error
-                Error = Error + "The Staff Full Name may not be blank : ";
-            }
-            if (staffPassword.Length > 30)
-            {
-                Error = Error + "The Staff Full Name must be less than 30 : ";
-            }
-
-            //Email
-            if (email.Length == 0)
-            {
-                //record the error
-                Error = Error + "The Email may not be blank : ";
-            }
-            if (email.Length > 40)
-            {
-                Error = Error + "The Email must be less than 40 : ";
-            }
-
             //Role
             if (role.Length == 0)
             {
                 //record the error
-                Error = Error + "The Role may not be blank : ";
+                Error = Error + "The Role may not be blank : </br>";
             }
             if (role.Length > 30)
             {
-                Error = Error + "The Role must be less than 30 : ";
+                Error = Error + "The Role must be less than 30 : </br>";
             }
             //return any error messages
             return Error;
