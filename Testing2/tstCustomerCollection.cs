@@ -199,5 +199,37 @@ namespace Testing2
             Assert.IsFalse(Found);
         }
 
+        //Filter Method for Customer 
+        [TestMethod]
+        public void ReportByCustomerAddressMethodOK()
+        {
+            //Create an instance of the filtered data 
+            clsCustomerCollection FilterCustomerAddress = new clsCustomerCollection();
+            //Variable to store the outcome
+            Boolean OK = true;
+            //Apply a blank string (should return all records);
+            FilterCustomerAddress.ReportByCustomerAddress("LE4 4FT, 88 Edgbaston Road, London");
+            //Check thatthe correct number of records are found 
+            if (FilterCustomerAddress.Count == 2)
+            {
+                //Check to see that the first record is 17 
+                if (FilterCustomerAddress.CustomerList[0].CustomerId != 17)
+                {
+                    OK = false;
+                }
+                //Check to see that the first record is 20 
+                if (FilterCustomerAddress.CustomerList[1].CustomerId != 20)
+                {
+                    OK = false;
+                }
+                else
+                {
+                    OK = false;
+                }
+                //Test to see that there are no records 
+                Assert.IsTrue(OK);
+            }          
+        }
+
     }
 }
