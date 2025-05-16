@@ -8,6 +8,8 @@ namespace ClassLibrary
 
         //Private Data Member for the List 
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        //Private Data Member for this Customer 
+        clsCustomer mThisCustomer = new clsCustomer();
 
         //Constructor for the Class 
         public clsCustomerCollection()
@@ -68,6 +70,35 @@ namespace ClassLibrary
             }
         }
 
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //Return theprivate Data
+                return mThisCustomer;
+            }
+            set
+            {
+               //Set the Private Data 
+               mThisCustomer = value;
+            }
+        }
+
+        public int Add()
+        {
+            //Add a record to the Database on the values of mThisCustomer
+            //Connect to the DataBase 
+            clsDataConnection DB = new clsDataConnection();
+            //Set the Parameters for the stored Procedure 
+            DB.AddParameter("@CustomerFullName", mThisCustomer.CustomerFullName);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@CustomerPassword", mThisCustomer.CustomerPassword);
+            DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
+            DB.AddParameter("@CustomerAccountCreatedAt", mThisCustomer.CustomerAccountCreatedAt);
+            DB.AddParameter("@IsCustomerAccountActive", mThisCustomer.IsCustomerAccountActive);
+
+            //Execute the Query returning the primary key value 
+            return DB.Execute("sproc_tblCustomer_Insert");
+        }
     }
 }

@@ -55,10 +55,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.CustomerAddress = CustomerAddress;
             //Capture the Customer Account Created At 
             ACustomer.CustomerAccountCreatedAt = Convert.ToDateTime(CustomerAccountCreatedAt);
-            //Stores the Customer Full Name in the session Object 
-            Session["ACustomer"] = ACustomer;
+            //Capture the IsCustomerAccountActive Property
+            ACustomer.IsCustomerAccountActive = chkIsCustomerAccountActive.Checked;
+            //Create a new instance of the Customer Collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //Set the ThisCustomer Property 
+            CustomerList.ThisCustomer = ACustomer;
+            //Add the new Record 
+            CustomerList.Add();
             //Navigate to the View Page
-            Response.Redirect("CustomerViewer.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
 
         else
