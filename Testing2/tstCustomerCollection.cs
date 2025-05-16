@@ -125,5 +125,45 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.ThisCustomer, CustomerTestItem);
         }
 
+        //Update Method for the Customer Data Entry Form 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //Create the item of Test data 
+            clsCustomer CustomerTestItem = new clsCustomer();
+            //Variale to store the primary key
+            Int32 PrimaryKey = 0;
+            //Set its properties 
+            CustomerTestItem.IsCustomerAccountActive = true;
+            CustomerTestItem.CustomerFullName = "Mitchel Starc";
+            CustomerTestItem.CustomerEmail = "Starc@gmail.com";
+            CustomerTestItem.CustomerPassword = "MitchelMitchel";
+            CustomerTestItem.CustomerAddress = "LE9 3ST, 78 Edgbaston Street, Leicester ";
+            CustomerTestItem.CustomerAccountCreatedAt = DateTime.Now;
+            //Set This Customer to the Test Data 
+            AllCustomers.ThisCustomer = CustomerTestItem;
+            //Add the Record 
+            PrimaryKey = AllCustomers.Add();
+            //Set the Primary Key to the Test Data 
+            CustomerTestItem.CustomerId = PrimaryKey;
+            //Modify the Test Record
+            CustomerTestItem.IsCustomerAccountActive = false;
+            CustomerTestItem.CustomerFullName = "Josh Stantner";
+            CustomerTestItem.CustomerEmail = "JS@gmail.com";
+            CustomerTestItem.CustomerPassword = "StantnerStantnerJoshJosh";
+            CustomerTestItem.CustomerAddress = "LE4 4FT, 88 Edgbaston Road, London ";
+            CustomerTestItem.CustomerAccountCreatedAt = DateTime.Now;
+            //Set the record based on the new test data 
+            AllCustomers.ThisCustomer = CustomerTestItem;
+            //Update the Record 
+            AllCustomers.Update();
+            //Find the Record 
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //Test to see that the two values are the same 
+            Assert.AreEqual(AllCustomers.ThisCustomer, CustomerTestItem);
+        }
+
     }
 }
