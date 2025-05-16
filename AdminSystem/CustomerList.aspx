@@ -22,10 +22,11 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 74px; top: 510px; position: absolute; width: 98px" Text="Apply Filter" />
+            <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 74px; top: 510px; position: absolute; width: 98px" Text="Apply Filter" height="26px" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server" Font-Bold="True" ForeColor="Red" style="z-index: 1; left: 41px; top: 584px; position: absolute"></asp:Label>
+            <asp:Button ID="btnStats" runat="server" height="26px" OnClick="btnStats_Click" style="z-index: 1; left: 332px; top: 510px; position: absolute; right: 1394px; width: 113px" Text="Check Statistics" />
         </p>
         <p>
             <asp:Button ID="btnClearFilter" runat="server" height="26px" OnClick="btnClearFilter_Click" style="z-index: 1; left: 206px; top: 510px; position: absolute; width: 98px" Text="Clear Filter" />
