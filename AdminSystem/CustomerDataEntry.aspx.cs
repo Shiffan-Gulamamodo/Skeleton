@@ -8,9 +8,40 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //Variable to store the primary key with page level scope
+    Int32 CustomerId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Get the number of the Customer to be processed 
+        CustomerId = Convert.ToInt32(Session["CustomerId"]);
+        if (IsPostBack == false)
+        {
+            //If this Customer is not a new record 
+            if (CustomerId != -1)
+            {
+                //Display the Current data for the record 
+                DisplayCustomer();
+            }
+        }
+    }
 
+    void DisplayCustomer()
+    {
+        //Create an instance of the Customer 
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        //Find the record to update 
+        Customer.ThisCustomer.Find(CustomerId);
+        
+        //Display the Data for the Record 
+        txtCustomerId.Text = Customer.ThisCustomer.CustomerId.ToString();
+        txtCustomerFullName.Text = Customer.ThisCustomer.CustomerFullName.ToString();
+        txtCustomerEmail.Text = Customer.ThisCustomer.CustomerEmail.ToString();
+        txtCustomerPassword.Text = Customer.ThisCustomer.CustomerPassword.ToString();
+        txtCustomerAddress.Text = Customer.ThisCustomer.CustomerAddress.ToString();
+        txtCustomerAccountCreatedAt.Text = Customer.ThisCustomer.CustomerAccountCreatedAt.ToString();
+        chkIsCustomerAccountActive.Checked = Customer.ThisCustomer.IsCustomerAccountActive;
+        
+        
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -45,6 +76,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(CustomerFullName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerAccountCreatedAt);
         if (Error == "")
         {
+            //Capture the Customer Id
+            ACustomer.CustomerId = CustomerId; //Importamt Part
             //Capture the Customer Full Name 
             ACustomer.CustomerFullName = CustomerFullName;
             //Capture the Customer Email 
@@ -59,14 +92,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.IsCustomerAccountActive = chkIsCustomerAccountActive.Checked;
             //Create a new instance of the Customer Collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //Set the ThisCustomer Property 
-            CustomerList.ThisCustomer = ACustomer;
-            //Add the new Record 
-            CustomerList.Add();
-            //Navigate to the View Page
+
+            //If this is a new record i.e. CustomerId  = -1 then add the data 
+            if (CustomerId == -1)
+            {
+                //Set the ThisCustomer Property 
+                CustomerList.ThisCustomer = ACustomer;
+                //Add the new record 
+                CustomerList.Add();
+            }
+            //Otherwise it must be an Update 
+            else
+            {
+                //Find the record to Update 
+                CustomerList.ThisCustomer.Find(CustomerId);
+                //Set the ThisCustomer Property 
+                CustomerList.ThisCustomer = ACustomer;
+                //Update the Record 
+                CustomerList.Update();
+            }
+            //Navigate to the List Page
             Response.Redirect("CustomerList.aspx");
         }
-
         else
         {
             //Display the Error Message 
