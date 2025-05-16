@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -920,6 +921,46 @@ namespace Testing2
             Error = ACustomer.Valid(CustomerFullName, CustomerEmail, CustomerPassword, CustomerAddress, CustomerAccountCreatedAt);
             //Test to see that the result is correct 
             Assert.AreNotEqual(Error, "");
+        }
+
+        //Test for Statistics 
+        [TestMethod]
+        public void StatisticsGroupedByCustomerAddress()
+        {
+            //Create an instance of the class we want to create 
+            clsCustomer ACustomer = new clsCustomer();
+            //Invoke the method 
+            DataTable dT = ACustomer.StatisticsGroupedByCustomerAddress();
+            //According to the last executed stored procedures, there should be ten rows of data 
+            int noOfRecord = 10;
+            //Test to see that the result is correct 
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatisticsGroupedByCustomerAccountCreatedAt()
+        {
+            //Create an instance of the class we want to create 
+            clsCustomer ACustomer = new clsCustomer();
+            //Invoke the method 
+            DataTable dT = ACustomer.StatisticsGroupedByCustomerAccountCreatedAt();
+            //According to the last executed stored procedures, there should be three rows of data 
+            int noOfRecord = 3;
+            //Test to see that the result is correct 
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatisticsGroupedByIsCustomerAccountActive()
+        {
+            //Create an instance of the class we want to create 
+            clsCustomer ACustomer = new clsCustomer();
+            //Invoke the method 
+            DataTable dT = ACustomer.StatisticsGroupedByIsCustomerAccountActive();
+            //According to the last executed stored procedures, there should be three rows of data 
+            int noOfRecord = 2;
+            //Test to see that the result is correct 
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
 
     }

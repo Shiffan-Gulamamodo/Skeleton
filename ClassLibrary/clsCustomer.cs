@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Security.Principal;
 
 namespace ClassLibrary
 {
@@ -236,6 +238,39 @@ namespace ClassLibrary
             //Return any error messages 
             return Error;
 
+        }
+
+        /****** Statistics Grouped by Customer Address ******/
+        public DataTable StatisticsGroupedByCustomerAddress()
+        {
+            //Create an instance of the Data Connection 
+            clsDataConnection DB = new clsDataConnection();
+            //Execute the stored procedure 
+            DB.Execute("sproc_tblCustomer_Count_GroupByCustomerAddress");
+            //There should be either zero, one or more records 
+            return DB.DataTable;
+        }
+
+        /****** Statistics Grouped by Customer Account Created At ******/
+        public DataTable StatisticsGroupedByCustomerAccountCreatedAt()
+        {
+            //Create an instance of the Data Connection 
+            clsDataConnection DB = new clsDataConnection();
+            //Execute the stored procedure 
+            DB.Execute("sproc_tblCustomer_Count_GroupByCustomerAccountCreatedAt");
+            //There should be either zero, one or more records 
+            return DB.DataTable;
+        }
+
+        /****** Statistics Grouped by Is Customer Account Active ******/
+        public DataTable StatisticsGroupedByIsCustomerAccountActive()
+        {
+            //Create an instance of the Data Connection 
+            clsDataConnection DB = new clsDataConnection();
+            //Execute the stored procedure 
+            DB.Execute("sproc_tblCustomer_Count_GroupByIsCustomerAccountActive");
+            //There should be either zero, one or more records 
+            return DB.DataTable;
         }
 
     }
