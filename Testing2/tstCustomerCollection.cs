@@ -165,5 +165,39 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.ThisCustomer, CustomerTestItem);
         }
 
+        //Delete Method for the Customer Data Entry Form 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //Create the item of Test data 
+            clsCustomer CustomerTestItem = new clsCustomer();
+            //Variale to store the primary key
+            Int32 PrimaryKey = 0;
+            //Set its properties 
+            CustomerTestItem.IsCustomerAccountActive = true;
+            CustomerTestItem.CustomerId = 18;
+            CustomerTestItem.CustomerFullName = "Mitchel Starc";
+            CustomerTestItem.CustomerEmail = "Starc@gmail.com";
+            CustomerTestItem.CustomerPassword = "MitchelMitchel";
+            CustomerTestItem.CustomerAddress = "LE9 3ST, 78 Edgbaston Street, Leicester ";
+            CustomerTestItem.CustomerAccountCreatedAt = DateTime.Now;
+            //Set This Customer to the Test Data 
+            AllCustomers.ThisCustomer = CustomerTestItem;
+            //Add the Record 
+            PrimaryKey = AllCustomers.Add();
+            //Set the Primary Key to the Test Data 
+            CustomerTestItem.CustomerId = PrimaryKey;
+            //Find the Record 
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //Delete the record 
+            AllCustomers.Delete();
+            //Now Find the Record 
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //Test to see that the two values are the same 
+            Assert.IsFalse(Found);
+        }
+
     }
 }

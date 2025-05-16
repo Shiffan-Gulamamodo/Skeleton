@@ -111,6 +111,7 @@ namespace ClassLibrary
             }
         }
 
+        //Find Method 
         public bool Find(int CustomerId)
         {
 
@@ -143,6 +144,7 @@ namespace ClassLibrary
 
         }
 
+        //Valid Method
         public string Valid(string customerFullName, string customerEmail, string customerPassword, string customerAddress, string customerAccountCreatedAt)
         {
             //Creating a String Variable to store the error 
