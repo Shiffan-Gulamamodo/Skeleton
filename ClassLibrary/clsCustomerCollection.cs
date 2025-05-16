@@ -84,6 +84,7 @@ namespace ClassLibrary
             }
         }
 
+        //Add Method
         public int Add()
         {
             //Add a record to the Database on the values of mThisCustomer
@@ -101,6 +102,19 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblCustomer_Insert");
         }
 
+        //Delete Method
+        public void Delete()
+        {
+            //Delete the record pointed to by ThisCustomer 
+            //Connect to Database 
+            clsDataConnection DB = new clsDataConnection();
+            //Set the parameters for the Stored Procedure 
+            DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
+            //Execute the stored procedure
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        //Update Method 
         public void Update()
         {
             //Update an existing record based on the values of ThisCustomer
