@@ -46,9 +46,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.lastUpdated = Convert.ToDateTime(lastUpdated);
             //capture the Staff's Role
             AStaff.Role = Role;
-            Session["AStaff"] = AStaff;
-            //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            //capture if the Staff is Active
+            AStaff.isActive = chkActive.Checked;
+            //create a new instance of the Staff collection
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set the ThisStaff property
+            StaffList.ThisStaff = AStaff;
+            //add the new record
+            StaffList.Add();
+            //redirect to the list page
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
