@@ -29,7 +29,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             AnOrder.DeliveryAddress = DeliveryAddress;
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
-            Session["AnOrder"] = AnOrder;
+            clsOrderCollection OrderList = new clsOrderCollection();
+            OrderList.ThisOrder = AnOrder;
+            OrderList.Add();
             Response.Redirect("OrderViewer.aspx");
         }
         else
