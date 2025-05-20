@@ -146,4 +146,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkIsCustomerAccountActive.Checked = ACustomer.IsCustomerAccountActive;
         }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //Redirect the user back to the List Page 
+        Response.Redirect("CustomerList.aspx");
+    }
 }
