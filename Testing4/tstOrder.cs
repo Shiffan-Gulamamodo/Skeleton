@@ -375,6 +375,26 @@ namespace Testing4
             Error = AnOrder.Valid(DeliveryAddress, OrderDate);
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.IsPaid = true;
+            TestItem.OrderID = 1;
+            TestItem.OrderLineID = 1;
+            TestItem.CustomerID = 1;
+            TestItem.StaffID = 1;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.DeliveryAddress = "123 Test St";
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderID = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
     }
 
 }
