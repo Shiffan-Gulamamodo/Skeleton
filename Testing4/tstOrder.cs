@@ -213,7 +213,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             string Error = "";
-            Error = AnOrder.Valid(OrderDate, DeliveryAddress);
+            Error = AnOrder.Valid(DeliveryAddress, OrderDate);
             Assert.AreEqual(Error, "");
         }
 
@@ -395,6 +395,7 @@ namespace Testing4
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
+       
     }
 
 }
