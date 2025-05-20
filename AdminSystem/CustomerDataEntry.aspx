@@ -48,7 +48,7 @@
         </p>
         <p>
             <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 111px; top: 479px; position: absolute; width: 123px" Text="Ok" OnClick="btnOK_Click" />
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 274px; top: 477px; position: absolute; width: 123px" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 274px; top: 477px; position: absolute; width: 123px" Text="Cancel" OnClick="btnCancel_Click" />
         </p>
         <p>
             &nbsp;</p>
