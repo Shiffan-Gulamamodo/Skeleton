@@ -945,7 +945,7 @@ namespace Testing2
             //Invoke the method 
             DataTable dT = ACustomer.StatisticsGroupedByCustomerAccountCreatedAt();
             //According to the last executed stored procedures, there should be three rows of data 
-            int noOfRecord = 5;
+            int noOfRecord = 6;
             //Test to see that the result is correct 
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }

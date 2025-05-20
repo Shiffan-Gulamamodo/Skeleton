@@ -100,6 +100,17 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblStaff_Insert");
         }
 
+        public void Delete()
+        {
+            //deletes the record pointed to by thisStaff
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_Delete");
+        }
+
         public void Update()
         {
             //update an existing record based on the values of thisStaff

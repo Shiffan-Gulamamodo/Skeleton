@@ -130,7 +130,6 @@ namespace Testing1
             //variable to store the primary key
             Int32 PrimaryKey = 0;
             //set its properties
-            TestItem.StaffId = 8;
             TestItem.StaffFullName = "Aizen Sosuke";
             TestItem.StaffPassword = "SoulSociety99";
             TestItem.Email = "bankai123@hotmail.com";
@@ -144,7 +143,6 @@ namespace Testing1
             //set the primary key of the test data
             TestItem.StaffId = PrimaryKey;
             //modify the test record
-            TestItem.StaffId = 16;
             TestItem.StaffFullName = "Kyoraku Shunsui";
             TestItem.StaffPassword = "SoulSociety11";
             TestItem.Email = "bankai789@hotmail.com";
@@ -159,6 +157,39 @@ namespace Testing1
             AllStaff.ThisStaff.Find(PrimaryKey);
             //test to see if ThisStaff matches the test data
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.StaffId = 7;
+            TestItem.StaffFullName = "Asta";
+            TestItem.StaffPassword = "magicmagic";
+            TestItem.Email = "blackclover@hotmail.com";
+            TestItem.lastUpdated = DateTime.Now;
+            TestItem.isActive = true;
+            TestItem.Role = "Supplier Manager";
+            //set ThisStaff to the test data
+            AllStaff.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set the primary key of the test data
+            TestItem.StaffId = PrimaryKey;
+            //find the record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //delete the record
+            AllStaff.Delete();
+            //now find the record
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
         }
     }
 }
