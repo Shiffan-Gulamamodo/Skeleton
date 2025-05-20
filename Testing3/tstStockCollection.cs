@@ -94,8 +94,80 @@ namespace Testing3
             Assert.AreEqual(AllStocks.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its proterties
+            TestItem.InStock = true;
+            TestItem.StockId = 5;
+            TestItem.SupplierId = 1;
+            TestItem.ProductName = "iPhone 14 Pro Max";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Price = 947;
+            TestItem.StockQuantity = 25;
+            //set ThisStock to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //set the primary key of the test data
+            TestItem.StockId = PrimaryKey;
+            //find the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see two values are the same
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its proterties
+            TestItem.InStock = true;
+            TestItem.SupplierId = 1;
+            TestItem.ProductName = "iPhone 14 Pro Max";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Price = 947;
+            TestItem.StockQuantity = 25;
+            //set ThisStock to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //set the primary key of the test data
+            TestItem.StockId = PrimaryKey;
+            //modify the test data
+            TestItem.InStock = false;
+            TestItem.SupplierId = 2;
+            TestItem.ProductName = "Samsung Galaxy S23 Ultra";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Price = 1099;
+            TestItem.StockQuantity = 30;
+            //set the record based on the new test data
+            AllStocks.ThisStock = TestItem;
+            //update the record
+            AllStocks.Update();
+            //find the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see if ThisStock matches the test data
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+
     }
 
 }
+
+
+
+
 
 

@@ -8,9 +8,36 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StockId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the stock to be processed
+        StockId = Convert.ToInt32(Session["StockId"]);
+        //if this is the first time the page is displayed
+        if (IsPostBack == false)
+        {
+            //if this is the not a new record
+            if (StockId != -1)
+            {
+                //display the current data for the record
+                DisplayStock();
+            }
+        }
+    }
+    void DisplayStock()
+    {
+        //create an instance of the stock 
+        clsStockCollection Stock = new clsStockCollection();
+        //find the record to update
+        Stock.ThisStock.Find(StockId);
+        //display the data for the record
+        txtStockID.Text = Stock.ThisStock.StockId.ToString();
+        txtSupplierID.Text = Stock.ThisStock.SupplierId.ToString();
+        txtProductName.Text = Stock.ThisStock.ProductName;
+        txtPrice.Text = Stock.ThisStock.Price.ToString();
+        txtStockQuantity.Text = Stock.ThisStock.StockQuantity.ToString();
+        txtDateAdded.Text = Stock.ThisStock.DateAdded.ToString();
+        chkInStock.Checked = Stock.ThisStock.InStock;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -35,14 +62,44 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AStock.Valid(ProductName, DateAdded);
         if (Error == "")
         {
+            //capture the stock id
+            AStock.StockId = StockId;
             //capture the Product Name
             AStock.ProductName = ProductName;
+            //capture the price
+            AStock.Price = Convert.ToDecimal(Price);
+            //capture the stock quantity
+            AStock.StockQuantity = Convert.ToInt32(StockQuantity);
+            //capture the supplier id
+            AStock.SupplierId = Convert.ToInt32(SupplierId);
+            //capture the in stock value
+            AStock.InStock = chkInStock.Checked;
             //capture the Date Added
             AStock.DateAdded = Convert.ToDateTime(DateAdded);
-            //store the stock in the session object
-            Session["AStock"] = AStock;
-            //navigate to the view page
-            Response.Redirect("StockViewer.aspx");
+            //create a new instance of the stock collection
+            clsStockCollection StockList = new clsStockCollection();
+
+            //if this is a new record i. e. StockId = -1 then add the data
+            if (StockId == -1)
+            {
+                //set the ThisStock property
+                StockList.ThisStock = AStock;
+                //add the new record
+                StockList.Add();
+            }
+            //otherwise it must be an update 
+            else
+            {
+                //find the record to update
+                StockList.ThisStock.Find(StockId);
+                //set the ThisStock property
+                StockList.ThisStock = AStock;
+                //update the record
+                StockList.Update();
+            }
+
+            //redirect back to the list page
+            Response.Redirect("StockList.aspx");
         }
         else
         {
@@ -75,4 +132,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkInStock.Checked = AStock.InStock;
         }
     }
+
+    
+
 }
+
