@@ -3,11 +3,11 @@ using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing5
-{
+{ 
     [TestClass]
     public class TestingSupplier
     {
-        string PhoneName = "Jervin";
+        string PhoneName = "Iphone 14";
         string DeliveryDate = "10/02/2024";
         string IsAvailable = "False";
 
@@ -476,5 +476,7 @@ namespace Testing5
             // Test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-    }
+ }
+
+
 }
