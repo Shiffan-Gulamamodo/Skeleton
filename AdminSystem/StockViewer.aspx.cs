@@ -16,17 +16,17 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the product name
         Response.Write("Product Name: " + AStock.ProductName + "<br/>");
         //display the stock quantity
-        Response.Write("Stock Quantity: "+AStock.StockQuantity + "<br/>");
-      
+        Response.Write("Stock Quantity: "+ AStock.StockQuantity + "<br/>");
+        //display the stock ID
         Response.Write("Stock ID: "+ AStock.StockId + "<br/>");
         //display the supplier ID
         Response.Write("Supplier ID: "+ AStock.SupplierId + "<br/>");
         //display the date added
-        Response.Write("Date Added: "+AStock.DateAdded + "<br/>");
+        Response.Write("Date Added: "+ AStock.DateAdded + "<br/>");
         //display the price
-        Response.Write("Price: "+AStock.Price + "<br/>");
+        Response.Write("Price: "+ AStock.Price + "<br/>");
         //display the in stock status
-        Response.Write("Stock Status: "+AStock.InStock + "<br/>");
+        Response.Write("Stock Status: "+ AStock.InStock + "<br/>");
         
     }
 }

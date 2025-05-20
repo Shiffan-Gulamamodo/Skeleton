@@ -7,6 +7,8 @@ namespace ClassLibrary
     {
         //private data member for the stock list
         List<clsStock> mStockList = new List<clsStock>();
+        //priuvate member data for thisStock
+        clsStock mThisStock = new clsStock();
 
         //public property for the stock list
         public List<clsStock> StockList
@@ -23,7 +25,19 @@ namespace ClassLibrary
             }
         }
 
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock
+        {
+            get
+            {
+                //return the private data
+                return mThisStock;
+            }
+            set
+            {
+                //set the private data
+                mThisStock = value;
+            }
+        }
 
         public int Count
         {
@@ -73,6 +87,41 @@ namespace ClassLibrary
 
         }
 
+        public int Add()
+        {
+            //adds a record to the database based on the values of ThisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@SupplierId", mThisStock.SupplierId);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@ProductName", mThisStock.ProductName);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@InStock", mThisStock.InStock);
+
+            //execute the stored procedure
+            return DB.Execute("sproc_tblStock_Insert");
+        }
+
+        public void Update()
+        {
+            //update an existing record based on the values if ThisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StockId", mThisStock.StockId);
+            DB.AddParameter("@SupplierId", mThisStock.SupplierId);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@ProductName", mThisStock.ProductName);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@InStock", mThisStock.InStock);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Update");
+        }
     }
 
 }
+
+     
