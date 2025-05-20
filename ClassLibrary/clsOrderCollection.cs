@@ -80,6 +80,20 @@ namespace ClassLibrary
 
             return DB.Execute("sproc_tblOrder_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@DeliveryAddress", mThisOrder.DeliveryAddress);
+            DB.AddParameter("@StaffID", mThisOrder.StaffID);
+            DB.AddParameter("@CustomerID", mThisOrder.CustomerID);
+            DB.AddParameter("@OrderLineID", mThisOrder.OrderLineID);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@IsPaid", mThisOrder.IsPaid);
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
+
+            DB.Execute("sproc_tblOrder_Update");
+        }
     }
 }
 
