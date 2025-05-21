@@ -1,6 +1,7 @@
 ﻿using System;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data;
 
 namespace Testing4
 {
@@ -395,7 +396,35 @@ namespace Testing4
             AllOrders.ThisOrder.Find(PrimaryKey);
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
-       
+
+        [TestMethod]
+        public void StatStatisticsGroupedByCustomerID()
+        {
+            clsOrder AnOrder = new clsOrder();
+            DataTable dT = AnOrder.StatisticsGroupedByCustomerID();
+            int noOfRecord = 6;
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByStaffID()
+        {
+            clsOrder AnOrder = new clsOrder();
+            DataTable dT = AnOrder.StatisticsGroupedByStaffID();
+            int noOfRecord = 6;
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByOrderDate()
+        {
+            clsOrder AnOrder = new clsOrder();
+            DataTable dT = AnOrder.StatisticsGroupedByOrderDate();
+            int noOfRecord = 5;
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+
     }
 
 }
