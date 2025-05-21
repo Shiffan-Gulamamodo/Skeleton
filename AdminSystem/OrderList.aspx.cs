@@ -45,4 +45,15 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select an order to edit.";
         }
     }
+
+    protected void btnStat_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrderStatistics.aspx");
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Session["OrderID"] = +1;
+        Response.Redirect("OrderDataEntry.aspx");
+    }
 }

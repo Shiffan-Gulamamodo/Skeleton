@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace ClassLibrary
 {
@@ -148,6 +149,28 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date : ";
             }
             return Error;
+        }
+
+        // statistics methods //
+        public DataTable StatisticsGroupedByCustomerID()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblOrder_Count_GroupByCustomerID");
+            return DB.DataTable;
+        }
+
+        public DataTable StatisticsGroupedByOrderDate()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblOrder_Count_GroupByOrderDate");
+            return DB.DataTable;
+        }
+
+        public DataTable StatisticsGroupedByStaffID()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblOrder_Count_GroupByStaffID");
+            return DB.DataTable;
         }
     }
 }
