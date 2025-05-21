@@ -10,6 +10,8 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox1" runat="server" Height="470px" style="margin-bottom: 379px" Width="832px"></asp:TextBox>
     </form>
 </body>
 </html>
