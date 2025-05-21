@@ -56,35 +56,12 @@ namespace ClassLibrary
         //constructor for the class
         public clsStockCollection()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-            //onject for the data connect
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblStock_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank stock item
-                clsStock TestItem = new clsStock();
-                //read in the fields from the current record
-                TestItem.StockId = Convert.ToInt32(DB.DataTable.Rows[Index]["StockId"]);
-                TestItem.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
-                TestItem.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
-                TestItem.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
-                TestItem.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
-                TestItem.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["StockQuantity"]);
-                TestItem.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["InStock"]);
-                //add the item to the test list
-                mStockList.Add(TestItem);
-                //increment the index
-                Index++;
-            }
-
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -120,6 +97,62 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Update");
         }
+
+        public void Delete()
+        {
+            //delete the record pointed to by thisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StockId", mThisStock.StockId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void ReportByProductName(string ProductName)
+        {
+            //filters the records based on a full or partial product name
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the product name parameter to the database
+            DB.AddParameter("@ProductName", ProductName);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByProductName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStockList = new List<clsStock>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank stock object
+                clsStock AStock = new clsStock();
+                //read in the fields from the current record
+                AStock.StockId = Convert.ToInt32(DB.DataTable.Rows[Index]["StockId"]);
+                AStock.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierId"]);
+                AStock.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                AStock.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
+                AStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
+                AStock.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["StockQuantity"]);
+                AStock.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["InStock"]);
+                //add the record to the private data member
+                mStockList.Add(AStock);
+                //point at the next record
+                Index++;
+            }
+        }
+
     }
 
 }
