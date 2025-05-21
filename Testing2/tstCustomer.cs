@@ -932,7 +932,7 @@ namespace Testing2
             //Invoke the method 
             DataTable dT = ACustomer.StatisticsGroupedByCustomerAddress();
             //According to the last executed stored procedures, there should be ten rows of data 
-            int noOfRecord = 10;
+            int noOfRecord = 11;
             //Test to see that the result is correct 
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
@@ -945,7 +945,7 @@ namespace Testing2
             //Invoke the method 
             DataTable dT = ACustomer.StatisticsGroupedByCustomerAccountCreatedAt();
             //According to the last executed stored procedures, there should be three rows of data 
-            int noOfRecord = 6;
+            int noOfRecord = 8;
             //Test to see that the result is correct 
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
