@@ -8,8 +8,28 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 SupplyId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        SupplyId = Convert.ToInt32(Session["SupplyID"]);
+        if (IsPostBack == false)
+        {
+            if (SupplyId != -1)
+            {
+                DisplaySupplier();
+            }
+        }
+    }
+
+    void DisplaySupplier()
+    {
+        clsSupplierCollection SupplierBook = new clsSupplierCollection();
+        SupplierBook.ThisSupplier.Find(SupplyId);
+        txtSupplierID.Text = SupplierBook.ThisSupplier.SupplyId.ToString();
+        txtDeliveryDate.Text = SupplierBook.ThisSupplier.DeliveryDate.ToString();
+        txtPhoneName.Text = SupplierBook.ThisSupplier.PhoneName.ToString();
+        chkIsAvailable.Text = SupplierBook.ThisSupplier.IsAvailable.ToString();
+        txtStockID.Text = SupplierBook.ThisSupplier.StockID.ToString();
 
     }
 
@@ -18,15 +38,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsSupplier ASupplier = new clsSupplier();
         string PhoneName = txtPhoneName.Text;
         string DeliveryDate = txtDeliveryDate.Text;
-        bool IsAvailable = chkIsAvailable.Checked;
+        string IsAvailable = chkIsAvailable.Text;
+        string StockId = txtStockID.Text;
+        
         string Error = "";
+        Error = ASupplier.Valid( PhoneName,  DeliveryDate,  IsAvailable);
         if (Error == "")
         {
+            ASupplier.SupplyId = SupplyId;
             ASupplier.PhoneName = PhoneName;
             ASupplier.DeliveryDate = Convert.ToDateTime(DeliveryDate);
             ASupplier.IsAvailable = Convert.ToBoolean(IsAvailable);
-            Session["ASupplier"] = ASupplier;
-            Response.Redirect("SupplierViewer.aspx");
+            ASupplier.StockID = Convert.ToInt32(StockId);
+           clsSupplierCollection SupplierList = new clsSupplierCollection();
+
+            if (SupplyId == -1)
+            {
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Add();
+            }
+
+            else
+            {
+                SupplierList.ThisSupplier.Find(SupplyId);
+                SupplierList.ThisSupplier = ASupplier;
+                SupplierList.Update();
+            }
+             Response.Redirect("SupplierList.aspx");
+            
         }
         else
         {
