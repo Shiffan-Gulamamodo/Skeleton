@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace ClassLibrary
 {
@@ -209,7 +210,40 @@ namespace ClassLibrary
             }
             //return any error messages
             return Error;
-            }
-            
+        }
+
+        /***** Statistics Grouped by Role METHOD *****/
+        public DataTable StatisticsGroupedByStaffFullName()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_Count_GroupByStaffFullName");
+            //there should either zero, one, or more records
+            return DB.DataTable;
+        }
+
+        public DataTable StatisticsGroupedByRole()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_Count_GroupByRole");
+            //there should either zero, one, or more records
+            return DB.DataTable;
+        }
+
+        public DataTable StatisticsGroupedByIsActive()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_Count_GroupIsActive");
+            //there should either zero, one, or more records
+            return DB.DataTable;
+        }
     }
 }
