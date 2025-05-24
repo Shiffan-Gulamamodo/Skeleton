@@ -2,6 +2,7 @@
 using System.Threading;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data;
 
 namespace Testing1
 {
@@ -879,6 +880,48 @@ namespace Testing1
             Error = AStaff.Valid(StaffFullName, StaffPassword, Email, lastUpdated, Role);
             //test to see the results are correct
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByStaffFullName()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //invoke the method
+            DataTable dT = AStaff.StatisticsGroupedByStaffFullName();
+            //According to the last executed stored procedure, there should be 13 rows of data.
+            int noOfRecord = 13;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByRole()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //invoke the method
+            DataTable dT = AStaff.StatisticsGroupedByRole();
+            //According to the last executed stored procedure, there should be 6 rows of data.
+            int noOfRecord = 6;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByIsActive()
+        {
+            //create an instance of the class we want to create
+            clsStaff AStaff = new clsStaff();
+            //invoke the method
+            DataTable dT = AStaff.StatisticsGroupedByIsActive();
+            //According to the last executed stored procedure, there should be 2 rows of data.
+            int noOfRecord = 2;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
     }
 }
