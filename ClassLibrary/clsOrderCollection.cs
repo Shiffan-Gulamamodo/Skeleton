@@ -45,27 +45,10 @@ namespace ClassLibrary
         // constructor
         public clsOrderCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrder_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsOrder AnOrder = new clsOrder();
-                var row = DB.DataTable.Rows[Index];
-
-                AnOrder.OrderDate = row["OrderDate"] != DBNull.Value ? Convert.ToDateTime(row["OrderDate"]) : default(DateTime);
-                AnOrder.OrderID = row["OrderID"] != DBNull.Value ? Convert.ToInt32(row["OrderID"]) : 0;
-                AnOrder.OrderLineID = row["OrderLineID"] != DBNull.Value ? Convert.ToInt32(row["OrderLineID"]) : 0;
-                AnOrder.CustomerID = row["CustomerID"] != DBNull.Value ? Convert.ToInt32(row["CustomerID"]) : 0;
-                AnOrder.StaffID = row["StaffID"] != DBNull.Value ? Convert.ToInt32(row["StaffID"]) : 0;
-                AnOrder.IsPaid = row["IsPaid"] != DBNull.Value ? Convert.ToBoolean(row["IsPaid"]) : false;
-                AnOrder.DeliveryAddress = row["DeliveryAddress"] != DBNull.Value ? Convert.ToString(row["DeliveryAddress"]) : string.Empty;
-
-                mOrderList.Add(AnOrder);
-                Index++;
-            }
+            PopulateArray(DB);
+            
         }
 
         public int Add()
@@ -94,6 +77,43 @@ namespace ClassLibrary
 
             DB.Execute("sproc_tblOrder_Update");
         }
-    }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
+            DB.Execute("sproc_tblOrder_Delete");
+        }
+
+        public void ReportByDeliveryAddress(string DeliveryAddress)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@DeliveryAddress", DeliveryAddress);
+            DB.Execute("sproc_tblOrder_FilterByDeliveryAddress");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mOrderList = new List<clsOrder>();
+            while (Index < RecordCount)
+            {
+                clsOrder AnOrder = new clsOrder();
+                AnOrder.IsPaid = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsPaid"]);
+                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.StaffID = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffID"]);
+                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnOrder.OrderLineID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderLineID"]);
+                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AnOrder.DeliveryAddress = Convert.ToString(DB.DataTable.Rows[Index]["DeliveryAddress"]);
+
+                mOrderList.Add(AnOrder);
+                Index++;
+            }
+            }
+        }
 }
 

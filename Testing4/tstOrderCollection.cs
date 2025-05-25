@@ -95,6 +95,63 @@ namespace Testing4
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.StaffID = 1;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.OrderLineID = 1;
+            TestItem.CustomerID = 1;
+            TestItem.IsPaid = true;
+            TestItem.DeliveryAddress = "123 Test St";
+            TestItem.OrderID = 1;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderID = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+        
+        [TestMethod]
+        public void ReportByDeliveryAddressMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByDeliveryAddress("");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
 
+        [TestMethod]
+        public void ReportByDeliveryAddressNoneFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByDeliveryAddress("xxx xxxx xx");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByDeliveryAddressTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByDeliveryAddress("123 Test St");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrderList[0].OrderID != 6 || FilteredOrders.OrderList[1].OrderID != 121)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }

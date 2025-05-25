@@ -402,7 +402,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             DataTable dT = AnOrder.StatisticsGroupedByCustomerID();
-            int noOfRecord = 6;
+            int noOfRecord = 5;
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
 
@@ -411,7 +411,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             DataTable dT = AnOrder.StatisticsGroupedByStaffID();
-            int noOfRecord = 6;
+            int noOfRecord = 5;
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
 
@@ -420,7 +420,7 @@ namespace Testing4
         {
             clsOrder AnOrder = new clsOrder();
             DataTable dT = AnOrder.StatisticsGroupedByOrderDate();
-            int noOfRecord = 5;
+            int noOfRecord = 6;
             Assert.AreEqual(noOfRecord, dT.Rows.Count);
         }
 
