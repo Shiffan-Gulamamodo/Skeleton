@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace ClassLibrary
 {
@@ -209,6 +210,46 @@ namespace ClassLibrary
             //return any error messages
             return Error;
         }
+
+        /****** Statistics Grouped by Supplier id Method ******/
+        public DataTable StatisticsGroupedBySupplierId()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Count_GroupBySupplierId");
+            //There should be either zero, one, or more records
+            return DB.DataTable;
+        }
+
+        /****** Statistics Grouped by Product Name Method ******/
+        public DataTable StatisticsGroupedByProductName()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Count_GroupByProductName");
+            //There should be either zero, one, or more records
+            return DB.DataTable;
+        }
+
+        /****** Statistics Grouped by Date Addded Method ******/
+        public DataTable StatisticsGroupedByDateAdded()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Count_GroupByDateAdded");
+            //There should be either zero, one, or more records
+            return DB.DataTable;
+        }
+
     }
 
 }
+
+
+
