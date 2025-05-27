@@ -21,7 +21,8 @@
         <asp:TextBox ID="txtFilter" runat="server" style="position: relative; top: 7px; left: 33px; margin-bottom: 0px"></asp:TextBox>
         </p>
         <p>
-            <asp:Button ID="btnApplyFilter" runat="server" height="26px" OnClick="btnApplyFilter_Click" style="position: absolute; top: 418px; left: 10px; z-index: 1" Text="Apply Filter" width="95px" />
+            <asp:Button ID="btnStatisticsPage" runat="server" OnClick="btnStatisticsPage_Click" style="z-index: 1; left: 296px; top: 418px; position: absolute" Text="Statistics Page" />
+            <asp:Button ID="btnApplyFilter" runat="server" height="26px" OnClick="btnApplyFilter_Click" style="position: absolute; top: 419px; left: 19px; z-index: 1" Text="Apply Filter" width="95px" />
         </p>
         <p style="margin-left: 40px">
             <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 153px; top: 418px; position: absolute" Text="Clear Filter" />
@@ -29,6 +30,7 @@
         </p>
         <p>
             &nbsp;</p>
+        <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; left: 487px; top: 419px; position: absolute" Text="Return to Main Menu" />
     </form>
     </body>
 </html>

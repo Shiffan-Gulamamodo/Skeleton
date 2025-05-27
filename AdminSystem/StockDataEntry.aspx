@@ -1,4 +1,4 @@
-﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StockDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StockDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
 
 <!DOCTYPE html>
 
@@ -40,6 +40,7 @@
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 23px; top: 301px; position: absolute"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 23px; top: 345px; position: absolute" Text="OK" width="60px" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 344px; position: absolute; left: 137px" Text="Cancel" />
+        <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; left: 256px; top: 345px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>
