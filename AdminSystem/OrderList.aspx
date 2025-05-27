@@ -15,7 +15,6 @@
     <form id="form1" runat="server">
         <div>
             <asp:ListBox ID="lstOrderList" runat="server" Height="319px" Width="353px"></asp:ListBox>
-            <asp:Button ID="btnStat" runat="server" OnClick="btnStat_Click" Text="Statistics Page" />
         </div>
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
@@ -30,6 +29,8 @@
         <asp:Label ID="lblError" runat="server" Text="[lblError]"
             Style="position:absolute; top: 502px; left: 55px;"></asp:Label>
         <asp:Button ID="btnClearFilter" runat="server" Text="Clear Filter" OnClick="btnClearFilter_Click" />
+        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" Text="Return to Main Menu" />
+            <asp:Button ID="btnStat" runat="server" OnClick="btnStat_Click" Text="Statistics Page" />
     </form>
 </body>
 </html>
