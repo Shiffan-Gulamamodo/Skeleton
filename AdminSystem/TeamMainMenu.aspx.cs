@@ -37,8 +37,5 @@ public partial class TeamMainMenu : System.Web.UI.Page
         Response.Redirect("SupplierList.aspx");
     }
 
-    protected void btnOrders_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("OrdersList.aspx");
-    }
+    
 }
