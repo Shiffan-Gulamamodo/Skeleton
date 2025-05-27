@@ -227,17 +227,17 @@ namespace Testing3
             //variable to store the outcome
             Boolean OK = true;
             //apply a product name that doesn't exist
-            FilteredStocks.ReportByProductName("Nintendo Swich");
+            FilteredStocks.ReportByProductName("Nintendo Switch");
             //check that the correct number of records are found
             if (FilteredStocks.Count == 2)
             {
                 //check too see that the first record is 10
-                if (FilteredStocks.StockList[0].StockId != 10)
+                if (FilteredStocks.StockList[0].StockId != 227)
                 {
                     OK = false;
                 }
                 //check too see that the first record is 11
-                if (FilteredStocks.StockList[1].StockId != 11)
+                if (FilteredStocks.StockList[1].StockId != 229)
                 {
                     OK = false;
                 }
@@ -253,10 +253,3 @@ namespace Testing3
     }
 
 }
-
-
-
-
-
-
-
