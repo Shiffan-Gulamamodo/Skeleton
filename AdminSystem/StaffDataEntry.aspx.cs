@@ -33,13 +33,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //find the record to update
         Staff.ThisStaff.Find(StaffId);
         //display the data for the record
-        txtStaffId.Text = Staff.ThisStaff.StaffId.ToString();
-        txtStaffFullName.Text = Staff.ThisStaff.StaffFullName.ToString();
-        txtStaffPassword.Text = Staff.ThisStaff.StaffPassword.ToString();
-        txtEmail.Text = Staff.ThisStaff.Email.ToString();
-        txtLastUpdated.Text = Staff.ThisStaff.lastUpdated.ToString();
-        chkActive.Checked = Staff.ThisStaff.isActive;
-        txtRole.Text = Staff.ThisStaff.Role.ToString();
+        txtStaffId1.Text = Staff.ThisStaff.StaffId.ToString();
+        txtStaffFullName1.Text = Staff.ThisStaff.StaffFullName.ToString();
+        txtStaffPassword1.Text = Staff.ThisStaff.StaffPassword.ToString();
+        txtEmail1.Text = Staff.ThisStaff.Email.ToString();
+        txtLastUpdated1.Text = Staff.ThisStaff.lastUpdated.ToString();
+        chkActive1.Checked = Staff.ThisStaff.isActive;
+        txtRole1.Text = Staff.ThisStaff.Role.ToString();
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -48,17 +48,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStaff
         clsStaff AStaff = new clsStaff();
         //capture the Staff's FullName
-        string StaffFullName = txtStaffFullName.Text;
+        string StaffFullName = txtStaffFullName1.Text;
         //capture the Staff's Password
-        string StaffPassword = txtStaffPassword.Text;
+        string StaffPassword = txtStaffPassword1.Text;
         //capture the Staff's Email
-        string Email = txtEmail.Text;
+        string Email = txtEmail1.Text;
         //capture the Staff's Last Updated changes
-        string lastUpdated = txtLastUpdated.Text;
+        string lastUpdated = txtLastUpdated1.Text;
         //capture the Staff's Role
-        string Role = txtRole.Text;
+        string Role = txtRole1.Text;
         //capture isActive checkbox
-        string isActive = chkActive.Text;
+        string isActive = chkActive1.Text;
         //store the Staff Data in the session object
         string Error = "";
         //validate the data
@@ -78,7 +78,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the Staff's Role
             AStaff.Role = Role;
             //capture if the Staff is Active
-            AStaff.isActive = chkActive.Checked;
+            AStaff.isActive = chkActive1.Checked;
             //create a new instance of the Staff collection
             clsStaffCollection StaffList = new clsStaffCollection();
             
@@ -106,7 +106,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         else
         {
             //display the error message
-            lblError.Text = Error;
+            lblError1.Text = Error;
         }
     }
 
@@ -119,19 +119,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a variable to store the result of the find operation
         Boolean Found = false;
         //get the primary key entered by the user
-        StaffId = Convert.ToInt32(txtStaffId.Text);
+        StaffId = Convert.ToInt32(txtStaffId1.Text);
         //find the record
         Found = AStaff.Find(StaffId);
         //if found
         if (Found == true)
         {
             //display the values of the properties in the form
-            txtStaffFullName.Text = AStaff.StaffFullName;
-            txtStaffPassword.Text = AStaff.StaffPassword;
-            txtEmail.Text = AStaff.Email;
-            txtLastUpdated.Text = AStaff.lastUpdated.ToString();
-            txtRole.Text = AStaff.Role;
-            chkActive.Checked = AStaff.isActive;
+            txtStaffFullName1.Text = AStaff.StaffFullName;
+            txtStaffPassword1.Text = AStaff.StaffPassword;
+            txtEmail1.Text = AStaff.Email;
+            txtLastUpdated1.Text = AStaff.lastUpdated.ToString();
+            txtRole1.Text = AStaff.Role;
+            chkActive1.Checked = AStaff.isActive;
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect back to the list page
+        Response.Redirect("StaffList.aspx");
+    }
+
+
+    protected void btnReturnToMM_Click(object sender, EventArgs e)
+    {
+        //redirect to the Main Menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

@@ -58,7 +58,7 @@
             </div>
             <strong>
             <br/>
-            <asp:Button ID="BtnPrv" runat="server" OnClick="BtnPrv_Click" style="margin-bottom: 0px; background-color: brown; color:white;" Text="Back to Previous Page" />
+            <asp:Button ID="BtnPrv" runat="server" OnClick="BtnPrv_Click" style="margin-bottom: 0px; background-color: #9A4C30; color:white;" Text="Back to Staff List Page" />
             </strong>
         </div>
     </form>
