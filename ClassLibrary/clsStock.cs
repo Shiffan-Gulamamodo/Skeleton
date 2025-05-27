@@ -154,7 +154,7 @@ namespace ClassLibrary
                 //return false indicating there is a problem
                 return false;
             }
-         
+
         }
 
         public string Valid(string productName, string dateAdded)
@@ -212,4 +212,3 @@ namespace ClassLibrary
     }
 
 }
-
