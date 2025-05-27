@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -537,6 +538,46 @@ namespace Testing3
             Assert.AreNotEqual(Error, "");
         }
 
-    }
+        [TestMethod]
+        public void StatStatisticsGroupedSupplierId()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //invoke the method
+            DataTable dT = AStock.StatisticsGroupedBySupplierId();
+            //According to the last executed stored procedure, there should be 7 rows of data.
+            int noOfRecord = 7;
 
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByProductName()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //invoke the method
+            DataTable dT = AStock.StatisticsGroupedByProductName();
+            //According to the last executed stored procedure, there should be 14 rows of data.
+            int noOfRecord = 14;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByDateAdded()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //invoke the method
+            DataTable dT = AStock.StatisticsGroupedByDateAdded();
+            //According to the last executed stored procedure, there should be 13 rows of data.
+            int noOfRecord = 13;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+    }
 }
