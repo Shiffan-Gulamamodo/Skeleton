@@ -23,7 +23,7 @@
         </p>
         <p class="auto-style1">
             <asp:Button ID="btnStaff" runat="server" OnClick="btnStaff_Click" style="z-index: 1; left: 422px; top: 148px; position: absolute; width: 101px" Text="Staff" />
-            <asp:Button ID="btnOrders" runat="server" OnClick="btnOrders_Click" style="margin-top: 20px; margin-bottom: 0px" Text="Orders" />
+            
         </p>
         <p>
             &nbsp;</p>
