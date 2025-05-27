@@ -119,4 +119,14 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstStockList.DataBind();
     }
+
+    protected void btnStatisticsPage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StockStatistics.aspx");
+    }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
