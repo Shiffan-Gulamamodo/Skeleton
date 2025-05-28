@@ -15,7 +15,7 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:ListBox ID="lstSupplierList" runat="server" style="z-index: 1; left: 16px; top: 16px; position: absolute; height: 272px; width: 336px"></asp:ListBox>
+            <asp:ListBox ID="lstSupplierList" runat="server" style="z-index: 1; left: 24px; top: 23px; position: absolute; height: 271px; width: 316px"></asp:ListBox>
         </p>
         <p>
             &nbsp;</p>
@@ -25,13 +25,17 @@
             &nbsp;</p>
         <p>
             <asp:Button ID="btnEdit" runat="server" style="z-index: 1; top: 307px; position: absolute; height: 23px; width: 40px; left: 129px" Text="Edit" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 212px; top: 308px; position: absolute; width: 57px; height: 24px" Text="Delete" />
         </p>
         <p>
-            &nbsp;</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p>
         <p>
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 29px; top: 357px; position: absolute" Text="[lblError]"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 28px; top: 364px; position: absolute; right: 1755px;" Text="[lblError]"></asp:Label>
+            <asp:TextBox ID="TextBox1" runat="server" Width="106px"></asp:TextBox>
         </p>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 66px; top: 307px; position: absolute; height: 22px;" Text="Add" />
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>

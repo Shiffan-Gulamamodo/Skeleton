@@ -64,16 +64,6 @@ namespace Testing5
 
 
             [TestMethod]
-            public void CountOK()
-            {
-                clsSupplierCollection AllSupplier = new clsSupplierCollection();
-                Int32 SomeCount = 0;
-                AllSupplier.Count = SomeCount;
-                Assert.AreEqual(AllSupplier.Count, SomeCount);
-            }
-
-
-            [TestMethod]
             public void ListAndCountOK()
             {
                 //Create an instance of the class we want to create
@@ -97,7 +87,33 @@ namespace Testing5
                 Assert.AreEqual(AllSupplier.Count, TestList.Count);
             }
 
-            [TestMethod]    
+            [TestMethod]
+            public void AddMethodOK()
+            {
+                //create an instance of the class we want to create
+                clsSupplierCollection AllSupplier = new clsSupplierCollection();
+                //create an instance of the class we want to create
+                clsSupplier TestSupplier = new clsSupplier();
+                Int32 Primarykey = 0;
+                //set its properties
+                TestSupplier.SupplyId = 4;
+                TestSupplier.PhoneName = "Iphone 14";
+                TestSupplier.DeliveryDate = DateTime.Now;
+                TestSupplier.IsAvailable = false;
+                //set ThisSupplier to the test data
+                AllSupplier.ThisSupplier = TestSupplier;
+                //add the record
+                Primarykey = AllSupplier.Add();
+                //set the primary key of the test data
+                TestSupplier.SupplyId = Primarykey;
+                //find the record
+                AllSupplier.ThisSupplier.Find(Primarykey);
+                //test to see that the two values are the same 
+                Assert.AreEqual(AllSupplier.ThisSupplier, TestSupplier);
+            }
+            
+
+            [TestMethod]
             public void UpdateMethodOK()
             {
                 //create an instance of the class we want to create
@@ -122,14 +138,47 @@ namespace Testing5
 
             }
 
-            
+            [TestMethod]
+            public void DeleteMethodOK()
+            {   //create an instance of the class we want to create
+                clsSupplierCollection AllSupplier = new clsSupplierCollection();
+                clsSupplier TestSupplier = new clsSupplier();
+                Int32 Primarykey = 0;
+                TestSupplier.SupplyId = 4;
+                TestSupplier.PhoneName = "Iphone 14";
+                TestSupplier.DeliveryDate = DateTime.Now;
+                TestSupplier.IsAvailable = false;
+                AllSupplier.ThisSupplier = TestSupplier;
+                Primarykey = AllSupplier.Add();
+                AllSupplier.ThisSupplier.Find(Primarykey);
+                AllSupplier.Delete();
+                Boolean Found = AllSupplier.ThisSupplier.Find(Primarykey);
+                Assert.IsFalse(Found);
+            }
+
+            [TestMethod]
+            public void ReportByPhoneNameMethodOK()
+            {
+                clsSupplierCollection AllSupplier = new clsSupplierCollection();
+                clsSupplierCollection FilteredSupplier = new clsSupplierCollection();
+                FilteredSupplier.ReportByPhoneName("");
+                Assert.AreEqual(AllSupplier.Count, FilteredSupplier.Count);
+
+            }
+        
+
+        [TestMethod]
+            public void ReportByPhoneNameNoneFound()
+            {
+                //create an instance of the class we want to create
+                clsSupplierCollection FilteredSupplier = new clsSupplierCollection();
+                //apply a blank string to the filter to test it works
+                FilteredSupplier.ReportByPhoneName("Switch");
+                //test to see that there are no records found
+                Assert.AreEqual(0, FilteredSupplier.Count);
+            }
+
         }
-
     }
-
-
-
-
-
 }
 
