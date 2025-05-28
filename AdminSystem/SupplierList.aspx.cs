@@ -44,4 +44,20 @@ public partial class _1_List : System.Web.UI.Page
 
 
 
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    { 
+        Int32 SupplyId;
+        if (lstSupplierList.SelectedIndex != -1)
+        {
+            SupplyId = Convert.ToInt32(lstSupplierList.SelectedValue);
+            Session["SupplierId"] = SupplyId;
+            Response.Redirect("SupplierDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to delete";
+        }
+
+    }
 }
