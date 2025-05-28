@@ -12,7 +12,14 @@ public partial class _1Viewer : System.Web.UI.Page
     {
         clsOrder AnOrder = new clsOrder();
         AnOrder = (clsOrder)Session["AnOrder"];
-        Response.Write(AnOrder.DeliveryAddress);
-       
+
+        if (AnOrder != null)
+        {
+            Response.Write(AnOrder.DeliveryAddress);
+        }
+        else
+        {
+            Response.Write("Order not found in session.");
+        }
     }
 }

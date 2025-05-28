@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="background-color: pink;">
     <form id="form1" runat="server">
         <div>
         </div>
@@ -28,10 +28,10 @@
         <p>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 22px; top: 269px; position: absolute"></asp:Label>
         </p>
-        <p>
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 32px; top: 307px; position: absolute; height: 26px;" Text="OK" />
+        <p style="margin-left: 1400px">
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 55px; top: 320px; position: absolute;" Text="OK" />
         </p>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 136px; top: 307px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 134px; top: 320px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 326px; top: 31px; position: absolute" Text="Find" />
         <p>
             &nbsp;</p>
@@ -41,8 +41,10 @@
             &nbsp;</p>
         <p>
             &nbsp;</p>
+        <p style="margin-left: 40px">
+            &nbsp;</p>
         <p>
-            <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="margin-top: 2px" Text="Return to Main Menu" />
+            <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="margin-top: 2px; position: absolute; top: 316px; left: 251px; height: 30px;" Text="Return to Main Menu" />
         </p>
     </form>
 </body>

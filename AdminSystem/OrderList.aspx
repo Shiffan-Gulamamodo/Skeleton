@@ -9,6 +9,9 @@
         #form1 {
             height: 664px;
         }
+        body {
+            background-color: pink;
+        }
     </style>
 </head>
 <body>

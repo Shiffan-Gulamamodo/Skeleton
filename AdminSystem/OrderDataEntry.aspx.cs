@@ -43,7 +43,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string OrderDate = txtOrderDate.Text;
         string CustomerID = txtCustomerId.Text;
         string OrderLineID = txtOrderLineId.Text;
-        string IsPaid = chkIsPaid.Text;
+        bool IsPaid = chkIsPaid.Checked;
         string Error = "";
         Error = AnOrder.Valid(DeliveryAddress, OrderDate);
         if (Error == "")
@@ -53,6 +53,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.StaffID = Convert.ToInt32(StaffID);
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             AnOrder.OrderLineID = Convert.ToInt32(OrderLineID);
+            AnOrder.IsPaid = IsPaid;
             AnOrder.IsPaid = Convert.ToBoolean(IsPaid);
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
             clsOrderCollection OrderList = new clsOrderCollection();
@@ -67,6 +68,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 OrderList.ThisOrder = AnOrder;
                 OrderList.Update();
             }
+                Session["AnOrder"] = AnOrder;
                 Response.Redirect("OrderViewer.aspx");
 
             }
