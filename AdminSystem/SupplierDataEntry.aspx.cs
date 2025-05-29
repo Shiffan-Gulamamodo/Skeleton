@@ -26,8 +26,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsSupplierCollection SupplierBook = new clsSupplierCollection();
         SupplierBook.ThisSupplier.Find(SupplyId);
         txtSupplierID.Text = SupplierBook.ThisSupplier.SupplyId.ToString();
-        txtDeliveryDate.Text = SupplierBook.ThisSupplier.DeliveryDate.ToString();
-        txtPhoneName.Text = SupplierBook.ThisSupplier.PhoneName.ToString();
+        txtDeliveryDate.Text = SupplierBook.ThisSupplier.DeliveryDate.ToShortDateString();
+        txtPhoneName.Text = SupplierBook.ThisSupplier.PhoneName;
         chkIsAvailable.Text = SupplierBook.ThisSupplier.IsAvailable.ToString();
         txtStockID.Text = SupplierBook.ThisSupplier.StockID.ToString();
 

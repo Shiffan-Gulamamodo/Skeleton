@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 
 namespace ClassLibrary
 {
@@ -113,7 +114,47 @@ namespace ClassLibrary
 
         public string Valid(string PhoneName, string DeliveryDate, string sAvailable)
         {
-            return"";
+            return "";
         }
-    }
+
+        /****** Statistics Grouped by Phone Name ******/
+        public DataTable StatisticsGroupedByPhoneName()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblSupplier_count_GroupByPhoneName");
+            //return the data table
+            return DB.DataTable;
+        }
+
+        /****** Statistics Grouped by DeliveryDate ******/
+        public DataTable StatisticsGroupedDeliveryDate()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblSupplier_Count_GroupDeliveryDate");
+            //return the data table
+            return DB.DataTable;
+
+        }
+
+        /****** Statistics Grouped by IsAvailable******/
+        public DataTable StatisticsGroupedIsAvailable()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblSupplier_Count_GroupIsAvailable");
+            //return the data table
+            return DB.DataTable;
+        }
+
+
+        }
 }
+
+
+
+
