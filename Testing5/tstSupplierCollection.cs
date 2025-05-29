@@ -178,7 +178,43 @@ namespace Testing5
                 Assert.AreEqual(0, FilteredSupplier.Count);
             }
 
+            [TestMethod]
+            public void ReportByPhoneNameTestDataFound()
+            {
+                //create an instance of the class we want to create
+                clsSupplierCollection FilteredSupplier = new clsSupplierCollection();
+                //varialbe to store the outcome
+                Boolean OK = true;
+                //apply a phone name that doesn't exist
+                FilteredSupplier.ReportByPhoneName("Iphone 10");
+                //check that the correct number of records are found
+                if (FilteredSupplier.Count == 2)
+                {
+                    //check that the first record is ID 11
+                    if (FilteredSupplier.SupplierList[0].SupplyId != 4)
+                    {
+                        OK = false;
+                    }
+                    //check that the second record is ID 12
+                    if (FilteredSupplier.SupplierList[1].SupplyId != 5)
+                    {
+                        OK = false;
+                    }
+                }
+                else
+                {
+                    OK = false;
+                }
+                //test to see that the outcome is correct
+                Assert.IsTrue(OK);
+            }
+
+
+
+
+
         }
+
     }
 }
 

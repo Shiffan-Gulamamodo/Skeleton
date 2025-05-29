@@ -1,7 +1,7 @@
 using System;
 using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Data;
 namespace Testing5
 { 
     [TestClass]
@@ -182,7 +182,7 @@ namespace Testing5
             //Invoke the method 
             Found = ASupplier.Find(SupplyId);
             //check the street property
-            if (ASupplier.PhoneName != "Iphone 14")
+            if (ASupplier.PhoneName != "Iphone 10")
             {
                 OK = false;
             }
@@ -222,18 +222,8 @@ namespace Testing5
             //invoke the method
             Error = ASupplier.Valid(PhoneName, DeliveryDate, IsAvailable);
 
+         }
 
-
-
-
-
-
-
-
-
-
-
-        }
         [TestMethod]
         public void PhoneNameMinLessOne()
         {
@@ -476,7 +466,44 @@ namespace Testing5
             // Test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
- }
+
+        [TestMethod]
+        public void StatStatisticsGroupedByPhoneName()
+        {
+            clsSupplier ASupplier = new clsSupplier();
+            DataTable dT = ASupplier.StatisticsGroupedByPhoneName();
+            int noOfRecord = 5;
+
+            Assert.AreEqual(noOfRecord, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticsGroupedDeliveryDate()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //create a data table variable to store the results
+            DataTable dT = new DataTable();
+            //invoke the method
+            dT = ASupplier.StatisticsGroupedDeliveryDate();
+            //test to see that the result is not null
+            Assert.IsNotNull(dT);
+        }
+
+
+        [TestMethod]
+        public void StatStatisticsGroupedIsAvailable()
+        {
+            //create an instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+            //create a data table variable to store the results
+            DataTable dT = new DataTable();
+            //invoke the method
+            dT = ASupplier.StatisticsGroupedIsAvailable();
+            //test to see that the result is not null
+            Assert.IsNotNull(dT);
+        }
+    }
 
 
 }
